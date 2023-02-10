@@ -1,0 +1,2 @@
+class FollowingShipsController < ApplicationController
+end
