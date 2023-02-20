@@ -1,4 +1,4 @@
 class ShoppingListSerializer < ActiveModel::Serializer
   attributes :id, :name, :date
-  has_one :User
+  belongs_to :User
 end
