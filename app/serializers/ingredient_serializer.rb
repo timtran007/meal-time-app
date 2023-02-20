@@ -1,5 +1,5 @@
 class IngredientSerializer < ActiveModel::Serializer
   attributes :id, :name, :category
-  has_one :Recipe
-  has_one :Shopping_List
+  belongs_to :Recipe
+  belongs_to :Shopping_List
 end
