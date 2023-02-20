@@ -3,8 +3,10 @@ class CreateIngredients < ActiveRecord::Migration[7.0]
     create_table :ingredients do |t|
       t.string :name
       t.string :category
-      t.belongs_to :Recipe, null: false, foreign_key: true
-      t.belongs_to :Shopping_List, null: false, foreign_key: true
+      t.string :quantity
+      t.string :measurement
+      t.belongs_to :recipe, null: false
+      t.belongs_to :shopping_list
 
       t.timestamps
     end
