@@ -9,4 +9,10 @@ class UsersController < ApplicationController
             render json: {errors: user.errors.full_messages}
         end
     end
+    
+    private
+
+    def user_params
+        params.permit(:name, :email, :password, :password_confirmation, :image_url)
+    end
 end
