@@ -2,7 +2,7 @@ class ApplicationController < ActionController::API
     include ActionController::Cookies
 
     rescue_from ActiveRecord::RecordNotFound, with: :render_record_not_found
-    
+
     rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity
 
     private
@@ -13,5 +13,9 @@ class ApplicationController < ActionController::API
 
     def render_unprocessable_entity(invalid)
         render json: {error: invalid.record.errors.full_messages}, status: 422
+    end
+
+    def authorize
+        render json: {errors: ['Unauthorized user']}, status: 401 unless session.include? :user_id
     end
 end
