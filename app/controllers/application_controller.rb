@@ -18,4 +18,8 @@ class ApplicationController < ActionController::API
     def authorize
         render json: {errors: ['Unauthorized user']}, status: 401 unless session.include? :user_id
     end
+
+    def find_user
+        user = User.find(session[:user_id])
+    end
 end

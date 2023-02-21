@@ -10,21 +10,21 @@ class RecipesController < ApplicationController
     end
 
     def create
-        user = User.find(session[:user_id])
-        recipe = user.recipes.create!(recipe_params)
+        find_user
+        recipe = find_user.recipes.create!(recipe_params)
         render json: recipe, status: :created
     end
 
     def update
-        user = User.find(session[:user_id])
-        recipe = user.recipes.find(params[:id])
+        find_user
+        recipe = find_user.recipes.find(params[:id])
         recipe.update(recipe_params)
         render json: recipe
     end
 
     def destroy
-        user = User.find(session[:user_id])
-        recipe = user.recipes.find(params[:id])
+        find_user
+        recipe = find_user.recipes.find(params[:id])
         recipe.destroy
         render json: recipe
     end
