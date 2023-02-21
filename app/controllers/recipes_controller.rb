@@ -23,6 +23,10 @@ class RecipesController < ApplicationController
     end
 
     def destroy
+        user = User.find(session[:user_id])
+        recipe = user.recipes.find(params[:id])
+        recipe.destroy
+        render json: recipe
     end
 
     private
