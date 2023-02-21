@@ -10,11 +10,20 @@ class RecipesController < ApplicationController
     end
 
     def create
+        user = User.find(session[:user_id])
+        recipe = user.recipes.create!(recipe_params)
+        render json: recipe, status: :created
     end
 
     def update
     end
 
     def destroy
+    end
+
+    private
+
+    def recipe_params
+        params.permit(:title, :image_url, :instructions, :cook_time_in_minutes, :prep_time_in_minutes, :likes, :user_id)
     end
 end
