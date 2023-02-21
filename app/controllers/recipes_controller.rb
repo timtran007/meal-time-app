@@ -16,6 +16,10 @@ class RecipesController < ApplicationController
     end
 
     def update
+        user = User.find(session[:user_id])
+        recipe = user.recipes.find(params[:id])
+        recipe.update(recipe_params)
+        render json: recipe
     end
 
     def destroy
