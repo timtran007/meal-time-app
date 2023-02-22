@@ -2,7 +2,12 @@ class UsersController < ApplicationController
 
     before_action :authorize
 
-    skip_before_action :authorize, only: [:create]
+    skip_before_action :authorize, only: [:create, :index]
+
+    def index
+        users = User.all
+        render json: users
+    end
     
     def create
         user = User.create!(user_params)
@@ -16,8 +21,16 @@ class UsersController < ApplicationController
 
     def show
         user = User.find(session[:user_id])
-        render json: user
+        render json: user, serializer: UserFollowShipSerializer
     end
+
+    #getting user's recipes
+    def user_recipe
+        find_user
+        recipes = find_user.recipes
+        render json: recipes
+    end
+
 
     private
 
