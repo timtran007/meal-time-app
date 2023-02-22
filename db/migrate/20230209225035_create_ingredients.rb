@@ -5,7 +5,6 @@ class CreateIngredients < ActiveRecord::Migration[7.0]
       t.string :category
       t.string :quantity
       t.string :measurement
-      t.references :recipe
       t.references :shopping_list
 
       t.timestamps
