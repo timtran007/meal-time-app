@@ -61,19 +61,35 @@ Step 9: serve on warmed up flour or corn tortillas', cook_time_in_minutes: 30, p
 
 monday_night_groceries = ShoppingList.create(name:'Mondays Groceries', user_id: tim.id)
 
+ribeye_16oz = RecipeIngredient.create(name: 'ribeye', category: 'meats', quantity: '16', measurement: 'ounces', recipe_id: ribeye_steak.id)
 
-ribeye_16oz = Ingredient.create(name: 'ribeye', category: 'meats', quantity: '16', measurement: 'ounces', recipe_id: ribeye_steak.id, shopping_list_id: monday_night_groceries.id)
+salt_1_TBSP = RecipeIngredient.create(name: 'salt', category: 'spices', quantity: '1', measurement: 'tablespoon', recipe_id: ribeye_steak.id)
 
-salt_1_TBSP = Ingredient.create(name: 'salt', category: 'spices', quantity: '1', measurement: 'tablespoon', recipe_id: ribeye_steak.id, shopping_list_id: monday_night_groceries.id)
+pepper_1_tsp = RecipeIngredient.create(name: 'pepper', category: 'spices', quantity: '1', measurement: 'teaspoon', recipe_id: ribeye_steak.id)
 
-pepper_1_tsp = Ingredient.create(name: 'pepper', category: 'spices', quantity: '1', measurement: 'teaspoon', recipe_id: ribeye_steak.id, shopping_list_id: monday_night_groceries.id)
+butter_1_TBSP = RecipeIngredient.create(name: 'butter', category: 'dairy', quantity: '1', measurement: 'tablespoon', recipe_id: ribeye_steak.id)
 
-butter_1_TBSP = Ingredient.create(name: 'butter', category: 'dairy', quantity: '1', measurement: 'tablespoon', recipe_id: ribeye_steak.id, shopping_list_id: monday_night_groceries.id)
+lime = RecipeIngredient.create(name: 'lime', category: 'produce', quantity: "3", measurement: 'individual', recipe_id: brazilian_lemonade.id)
 
-lime = Ingredient.create(name: 'lime', category: 'produce', quantity: "3", measurement: 'individual', recipe_id: brazilian_lemonade.id, shopping_list_id: monday_night_groceries.id)
+condensed_milk_third_cup = RecipeIngredient.create(name: 'condensed milk', category: 'baking', quantity: '1/3', measurement: 'cup', recipe_id: brazilian_lemonade.id)
 
-condensed_milk_third_cup = Ingredient.create(name: 'condensed milk', category: 'baking', quantity: '1/3', measurement: 'cup', recipe_id: brazilian_lemonade.id, shopping_list_id: monday_night_groceries.id)
+sugar_third_cup = RecipeIngredient.create(name: 'sugar', category: 'baking', quantity: '1/3', measurement: 'cup', recipe_id: brazilian_lemonade.id)
 
-sugar_third_cup = Ingredient.create(name: 'sugar', category: 'baking', quantity: '1/3', measurement: 'cup', recipe_id: brazilian_lemonade.id, shopping_list_id: monday_night_groceries.id)
+water_4_cups = RecipeIngredient.create(name: 'water', category: 'drinks', quantity: '4', measurement: 'cup', recipe_id: brazilian_lemonade.id)
 
-water_4_cups = Ingredient.create(name: 'water', category: 'drinks', quantity: '4', measurement: 'cup', recipe_id: brazilian_lemonade.id, shopping_list_id: monday_night_groceries.id)
+
+ribeye_16oz = Ingredient.create(name: 'ribeye', category: 'meats', quantity: '16', measurement: 'ounces', shopping_list_id: monday_night_groceries.id)
+
+salt_1_TBSP = Ingredient.create(name: 'salt', category: 'spices', quantity: '1', measurement: 'tablespoon', shopping_list_id: monday_night_groceries.id)
+
+pepper_1_tsp = Ingredient.create(name: 'pepper', category: 'spices', quantity: '1', measurement: 'teaspoon', shopping_list_id: monday_night_groceries.id)
+
+butter_1_TBSP = Ingredient.create(name: 'butter', category: 'dairy', quantity: '1', measurement: 'tablespoon', shopping_list_id: monday_night_groceries.id)
+
+lime = Ingredient.create(name: 'lime', category: 'produce', quantity: "3", measurement: 'individual', shopping_list_id: monday_night_groceries.id)
+
+condensed_milk_third_cup = Ingredient.create(name: 'condensed milk', category: 'baking', quantity: '1/3', measurement: 'cup', shopping_list_id: monday_night_groceries.id)
+
+sugar_third_cup = Ingredient.create(name: 'sugar', category: 'baking', quantity: '1/3', measurement: 'cup', shopping_list_id: monday_night_groceries.id)
+
+water_4_cups = Ingredient.create(name: 'water', category: 'drinks', quantity: '4', measurement: 'cup', shopping_list_id: monday_night_groceries.id)
