@@ -76,4 +76,4 @@ condensed_milk_third_cup = Ingredient.create(name: 'condensed milk', category: '
 
 sugar_third_cup = Ingredient.create(name: 'sugar', category: 'baking', quantity: '1/3', measurement: 'cup', recipe_id: brazilian_lemonade.id, shopping_list_id: monday_night_groceries.id)
 
-water_4_cups = Ingredient.create(name: 'water', category: 'drinks', quantity: '4', measurement: 'cup', recipe_id: brazilian_lemonade.id)
+water_4_cups = Ingredient.create(name: 'water', category: 'drinks', quantity: '4', measurement: 'cup', recipe_id: brazilian_lemonade.id, shopping_list_id: monday_night_groceries.id)
