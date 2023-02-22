@@ -29,6 +29,17 @@ class RecipesController < ApplicationController
         render json: recipe
     end
 
+    #add recipe ingredients action
+
+    #add follow_user action /recipe/:id, to "recipes#follow_user"
+    def follow_user
+        find_user
+        recipe = Recipe.find(params[:id])
+        user = recipe.user
+        followship = find_user.following_ships.create!(user_1_id: session[:user_id], user_2_id: user.id)
+        render json: followship
+    end
+
     private
 
     def recipe_params
