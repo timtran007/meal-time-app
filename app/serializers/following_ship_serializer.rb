@@ -1,5 +1,5 @@
 class FollowingShipSerializer < ActiveModel::Serializer
   attributes :id
-  has_one :user_1
-  has_one :user_2
+  belongs_to :user_1
+  belongs_to :user_2
 end
