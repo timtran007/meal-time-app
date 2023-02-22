@@ -25,7 +25,7 @@ class UsersController < ApplicationController
     end
 
     #getting user's recipes
-    def user_recipe
+    def user_recipes
         find_user
         recipes = find_user.recipes
         render json: recipes
