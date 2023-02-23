@@ -9,5 +9,10 @@ class User < ApplicationRecord
     has_many :follower_ships, foreign_key: :user_2, class_name: "FollowingShip"
     has_many :followers, through: :follower_ships, foreign_key: :user_2, source: :user_1
 
+    validates :name, presence: true
+    validates :email, presence: true, uniqueness: true
+    validates :password, confirmation: true
+    validates :password_confirmation, presence: true
+
 end
  
