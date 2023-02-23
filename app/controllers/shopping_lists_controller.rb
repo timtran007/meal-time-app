@@ -33,23 +33,10 @@ class ShoppingListsController < ApplicationController
         render json: shopping_list
     end
 
-    #creating ingredient inside of a shopping_list
-    def create_ingredient
-        find_user
-        shopping_list = find_user.shopping_lists.find(params[:id])
-        ingredient = shopping_list.ingredients.create!(ingredient_params)
-        render json: ingredient, status: :created
-    end
-
-
     private
 
     def shopping_list_params
         params.permit(:name, :date, :user_id)
-    end
-
-    def ingredient_params
-        params.permit(:name, :category, :shopping_list_id, :quantity, :measurement)
     end
 
 end
