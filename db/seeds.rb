@@ -11,9 +11,9 @@ ted = User.create(name: 'Ted', email: 'ted@gmail.com', password: '12345')
 vanessa = User.create(name: 'Vanessa', email: 'vanessa@gmail.com', password: '12345')
 noah = User.create(name: 'Noah', email: 'noah@gmail.com', password: '12345') 
 
-FollowingShip.create(user_1: noah, user_2: tim)
-FollowingShip.create(user_1: vanessa, user_2: tim)
-FollowingShip.create(user_1: ted, user_2: tim)
+FollowingShip.create(user_1_id: noah.id, user_2_id: tim.id)
+FollowingShip.create(user_1_id: vanessa.id, user_2_id: tim.id)
+FollowingShip.create(user_1_id: ted, user_2_id: tim.id)
 
 ribeye_steak = Recipe.create(title: 'Perfect Ribeye', instructions: 'Step 1: Bring ribeye steak out and season with salt and Pepper
 Step 2: Heat up castiron pan on High Heat until smoke
