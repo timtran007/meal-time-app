@@ -8,6 +8,12 @@ it('renders the login page successfully', () => {
 });
 
 it('renders the LoginForm component', () => {
-    render(<CreateNewRecipePage />);
+    render(<LoginPage />);
     const form = screen.getByRole('form', {name: /login form/i})
   })
+
+it("renders the text don't have an account yet sign up here", () => {
+    render(<LoginPage />);
+    const text = screen.getByText(/don't have an account yet?/i)
+    expect(text).toBeInTheDocument();
+})
