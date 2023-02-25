@@ -7,12 +7,6 @@ class ShoppingListsController < ApplicationController
         render json: shopping_lists
     end
 
-    def show
-        find_user
-        shopping_list = find_user.shopping_lists.find(params[:id])
-        render json: shopping_list
-    end
-
     def create
         find_user
         shopping_list = find_user.shopping_lists.create!(shopping_list_params)
