@@ -1,8 +1,10 @@
 import React from 'react'
 
-const CreateNewRecipePage = () => {
+function CreateNewRecipePage() {
   return (
-    <div>CreateNewRecipePage</div>
+    <div>
+      
+    </div>
   )
 }
 
