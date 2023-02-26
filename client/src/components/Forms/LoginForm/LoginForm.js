@@ -6,7 +6,25 @@ import Button from 'react-bootstrap/Button';
 
 function LoginForm() {
   return (
-    <div>LoginForm</div>
+    <Form>
+        <Form.Group as={Row} className={formField}>
+            <Form.Label
+                htmlFor='email'
+            >
+                Email:
+            </Form.Label>
+            <Col>
+                <Form.Control
+                    name='email'
+                    type='input'
+                    onChange={() => {}}
+                    value={formData}
+                >
+                    
+                </Form.Control>
+            </Col>
+        </Form.Group>
+    </Form>
   )
 }
 
