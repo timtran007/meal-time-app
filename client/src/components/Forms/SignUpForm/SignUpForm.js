@@ -27,7 +27,7 @@ function SignUpForm() {
     <Form>
         <Form.Group as={Row}>
             <Form.Label htmlFor='name'>
-                Name
+                Name:
             </Form.Label>
             <Col>
                 <Form.Control
@@ -36,6 +36,51 @@ function SignUpForm() {
                     type='input'
                     onChange={handleChange}
                     value={formData.name}
+                >
+                </Form.Control>
+            </Col>
+        </Form.Group>
+        <Form.Group as={Row}>
+            <Form.Label htmlFor='email'>
+                Email:
+            </Form.Label>
+            <Col>
+                <Form.Control
+                    id='email'
+                    name='email'
+                    type='input'
+                    onChange={handleChange}
+                    value={formData.email}
+                >
+                </Form.Control>
+            </Col>
+        </Form.Group>
+        <Form.Group as={Row}>
+            <Form.Label htmlFor='password'>
+                Password:
+            </Form.Label>
+            <Col>
+                <Form.Control
+                    id='password'
+                    name='password'
+                    type='input'
+                    onChange={handleChange}
+                    value={formData.password}
+                >
+                </Form.Control>
+            </Col>
+        </Form.Group>
+        <Form.Group as={Row}>
+            <Form.Label htmlFor='password_confirmation'>
+                Password Confirmation:
+            </Form.Label>
+            <Col>
+                <Form.Control
+                    id='password_confirmation'
+                    name='password_confirmation'
+                    type='input'
+                    onChange={handleChange}
+                    value={formData.password_confirmation}
                 >
                 </Form.Control>
             </Col>
