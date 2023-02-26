@@ -26,6 +26,12 @@ describe('render new recipe form', () => {
         const prepTimeInMinutesInput = screen.getByLabelText(/prep time/i)
         expect(prepTimeInMinutesInput).toBeInTheDocument()
     })
+
+    it('renders instructions input', () => {
+        render(<NewRecipeForm />);
+        const instructionsInput = screen.getByLabelText(/instructions/i)
+        expect(instructionsInput).toBeInTheDocument()
+    })
     
 })
 
@@ -56,6 +62,13 @@ describe('new recipe form functionality', () => {
         const prepTimeInMinutesInput = screen.getByLabelText(/prep time/i)
         fireEvent.change(prepTimeInMinutesInput, { target: { value: 10} })
         expect(prepTimeInMinutesInput.value).toBe(10)
+    })
+
+    it('should be able to type into instructions input', () => {
+        render(<NewRecipeForm />);
+        const instructionsInput = screen.getByLabelText(/instructions/i)
+        fireEvent.change(instructionsInput, { target: { value: "Step 1 you need to set the pan on high heat, Step 2: you need to season the steak with salt, pepper and garlic powder, Step 3 sear for 3 minutes each on both sides; Step 4 remove and place in the oven at 375 for 15 minutes or until internal temperature reaches 120; Step 5 remove and let rest for 10 minutes and then serve"} })
+        expect(instructionsInput.value).toBe("Step 1 you need to set the pan on high heat, Step 2: you need to season the steak with salt, pepper and garlic powder, Step 3 sear for 3 minutes each on both sides; Step 4 remove and place in the oven at 375 for 15 minutes or until internal temperature reaches 120; Step 5 remove and let rest for 10 minutes and then serve")
     })
 
     //clears out the the input fields once button is clicked
