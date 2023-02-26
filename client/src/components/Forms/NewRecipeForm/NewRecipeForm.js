@@ -24,8 +24,19 @@ function NewRecipeForm() {
             [key]: value
         })
     }
+
+    function handleSubmit(e) {
+        e.preventDefault()
+
+        //write post request to the endpoint '/recipes'
+
+        //set state of the new recipe within user recipes
+
+        setFormData(initialForm)
+    }
+
   return (
-    <Form>
+    <Form onSubmit={handleSubmit}>
         <Form.Control as={Row}>
             <Form.Label
                 htmlFor='title'
@@ -111,6 +122,13 @@ function NewRecipeForm() {
                 </Form.Control>
             </Col>
         </Form.Control>
+        <div>
+            <Button
+                type='submit'
+            >
+                Add Recipe
+            </Button>
+        </div>
     </Form>
   )
 }

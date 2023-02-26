@@ -97,7 +97,7 @@ describe('new recipe form functionality', () => {
         const button = screen.getByRole( 'button', { name: /add recipe/i})
         fireEvent.change(cookTimeInMinutesInput, { target: { value: 15} })
         fireEvent.click(button)
-        expect(cookTimeInMinutesInput.value).toBe(0)
+        expect(cookTimeInMinutesInput.value).toBe("0")
     })
     
     it('should clear prepTimeInMinutes input after button click', () => {
@@ -106,6 +106,6 @@ describe('new recipe form functionality', () => {
         const button = screen.getByRole( 'button', { name: /add recipe/i})
         fireEvent.change(prepTimeInMinutesInput, { target: { value: 10} })
         fireEvent.click(button)
-        expect(prepTimeInMinutesInput.value).toBe(0)
+        expect(prepTimeInMinutesInput.value).toBe("0")
     })
 })
