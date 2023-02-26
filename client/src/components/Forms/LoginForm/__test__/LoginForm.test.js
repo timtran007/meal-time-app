@@ -41,12 +41,12 @@ describe('login functionality', () => {
         expect(emailInput.value).toBe("")
     })
 
-    // it('should have empty password input once login button is clicked', () => {
-    //     //not sure why this is not working 
-    //     const passwordInput = screen.getByLabelText(/password/i)
-    //     const button = screen.getByRole('button', { name: /login/i })
-    //     fireEvent.change(passwordInput, { target: { value: "12345" }})
-    //     fireEvent.click(button)
-    //     expect(passwordInput.value).toBe('')
-    // })
+    it('should have empty password input once login button is clicked', () => {
+        render(<LoginForm />);
+        const passwordInput = screen.getByLabelText(/password/i)
+        const button = screen.getByRole('button', { name: /login/i })
+        fireEvent.change(passwordInput, { target: { value: "12345" }})
+        fireEvent.click(button)
+        expect(passwordInput.value).toBe('')
+    })
 })
