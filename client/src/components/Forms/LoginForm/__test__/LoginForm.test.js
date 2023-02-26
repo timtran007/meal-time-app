@@ -46,6 +46,6 @@ describe('login functionality', () => {
         const button = screen.getByRole('button', { name: /login/i })
         fireEvent.change(passwordInput, { target: { value: "12345" }})
         fireEvent.click(button)
-        expect(passwordInput).toBe('')
+        expect(passwordInput.value).toBe('')
     })
 })
