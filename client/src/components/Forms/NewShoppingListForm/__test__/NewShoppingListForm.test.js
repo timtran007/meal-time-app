@@ -16,7 +16,7 @@ describe('new shopping lists form functionality', () => {
         render(<NewShoppingListForm />);
         const nameInput = screen.getByLabelText(/name/i)
         fireEvent.change(nameInput, { target: { value: "Monday's Grocery List"} })
-        expect(nameInput.value).toBe("ribeye steak")
+        expect(nameInput.value).toBe("Monday's Grocery List")
     })
     
     //clears out the the input fields once button is clicked
@@ -24,7 +24,7 @@ describe('new shopping lists form functionality', () => {
     it('should clear name input after button click', () => {
         render(<NewShoppingListForm />);
         const nameInput = screen.getByLabelText(/name/i)
-        const button = screen.getByRole( 'button', { name: /add ingredient/i})
+        const button = screen.getByRole( 'button', { name: /add list/i})
         fireEvent.change(nameInput, { target: { value: "Monday's Grocery List"} })
         fireEvent.click(button)
         expect(nameInput.value).toBe("")
