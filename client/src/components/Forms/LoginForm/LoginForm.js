@@ -39,6 +39,21 @@ function LoginForm() {
                 </Form.Control>
             </Col>
         </Form.Group>
+        <Form.Group as={Row}>
+            <Form.Label htmlFor='password'>
+                Password
+            </Form.Label>
+            <Col>
+                <Form.Control
+                    id='password'
+                    name='password'
+                    type='input'
+                    onChange={handleChange}
+                    value={formData.password}
+                >
+                </Form.Control>
+            </Col>
+        </Form.Group>
     </Form>
   )
 }
