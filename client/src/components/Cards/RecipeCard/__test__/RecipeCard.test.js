@@ -5,7 +5,7 @@ describe('RecipeCard', () => {
 
     it('renders card view of a recipe', () => {
         render(<RecipeCard />);
-        const textElement = screen.getByLabelText(/total time/i)
+        const textElement = screen.getByText(/total time/i)
         expect(textElement).toBeInTheDocument()
     })
     
