@@ -54,14 +54,14 @@ describe('new recipe form functionality', () => {
         render(<NewRecipeForm />);
         const cookTimeInMinutesInput = screen.getByLabelText(/cook time in minutes/i)
         fireEvent.change(cookTimeInMinutesInput, { target: { value: 15} })
-        expect(cookTimeInMinutesInput.value).toBe(15)
+        expect(cookTimeInMinutesInput.value).toBe("15")
     })
     
     it('should be able to type into prepTimeInMinutes input', () => {
         render(<NewRecipeForm />);
         const prepTimeInMinutesInput = screen.getByLabelText(/prep time/i)
         fireEvent.change(prepTimeInMinutesInput, { target: { value: 10} })
-        expect(prepTimeInMinutesInput.value).toBe(10)
+        expect(prepTimeInMinutesInput.value).toBe("10")
     })
 
     it('should be able to type into instructions input', () => {
