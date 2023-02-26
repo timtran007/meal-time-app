@@ -3,18 +3,29 @@ import Nav from '../Nav'
 
 const mockedSetUser = jest.fn()
 
-it('renders the login page successfully', () => {
-    render(
-        <Nav 
-            user={[]}
-            setUser={mockedSetUser}
-        />);
-    if(user){
-        const text = screen.getByText(/my recipes/i)
+describe('Nav when user is logged out', () => {
+    it('renders the login page successfully', () => {
+        render(
+            <Nav 
+                user={[]}
+                setUser={mockedSetUser}
+            />);
+        const text = screen.getByText(/login/i)
         expect(text).toBeInTheDocument();
-    } else{
-        const text = screen.getByText(/login/i);
-        expect(text).toBeInTheDocument();
-    }
-});
+    });
+})
 
+
+describe('Nav when user is logged in', () => {
+    it('renders the login page successfully', () => {
+        render(
+            <Nav 
+                user={[{
+                    email: 'tim@gmail.com'
+                }]}
+                setUser={mockedSetUser}
+            />);
+    const text = screen.getByText(/my recipes/i);
+    expect(text).toBeInTheDocument();
+    });
+})
