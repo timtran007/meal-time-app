@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react';
-import ProfileRecipesPage from '../ProfileRecipesPage'
+import UserRecipesPage from '../UserRecipesPage'
 
-it('renders the ProfileRecipes page successfully', () => {
-  render(<ProfileRecipesPage />);
+it('renders the UserRecipes page successfully', () => {
+  render(<UserRecipesPage />);
   const heading = screen.getByRole('heading', {name: /my recipes/i});
   expect(heading).toBeInTheDocument();
 });

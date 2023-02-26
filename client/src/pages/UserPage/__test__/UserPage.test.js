@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react';
-import ProfilePage from '../ProfilePage'
+import UserPage from '../UserPage'
 
-it('renders the Profile page successfully', () => {
-  render(<ProfilePage />);
+it('renders the User page successfully', () => {
+  render(<UserPage />);
   const element = screen.getByText(/followers/i);
   expect(element).toBeInTheDocument();
 });
