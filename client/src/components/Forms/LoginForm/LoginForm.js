@@ -22,8 +22,17 @@ function LoginForm() {
         })
     }
 
+    function handleSubmit(e) {
+        e.preventDefault()
+        //need to write post request to '/login'
+
+        //set state of user
+
+        setFormData(initialFormData)
+    }
+
   return (
-    <Form>
+    <Form onSubmit={handleSubmit}>
         <Form.Group as={Row}>
             <Form.Label htmlFor='email'>
                 Email
@@ -47,13 +56,20 @@ function LoginForm() {
                 <Form.Control
                     id='password'
                     name='password'
-                    type='input'
+                    type='password'
                     onChange={handleChange}
                     value={formData.password}
                 >
                 </Form.Control>
             </Col>
         </Form.Group>
+        <div>
+            <Button
+                type='submit'
+            >
+                Login
+            </Button>
+        </div>
     </Form>
   )
 }
