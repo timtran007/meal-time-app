@@ -54,8 +54,8 @@ describe('new recipe ingredient form functionality', () => {
     it('should be able to type into measurement input', () => {
         render(<NewRecipeIngredientForm />);
         const measurementInput = screen.getByDisplayValue(/select a measurement/i)
-        fireEvent.change(measurementInput, { target: { value: "ounces"} })
-        expect(measurementInput.value).toBe("ounces")
+        fireEvent.change(measurementInput, { target: { value: "ounce/ounces"} })
+        expect(measurementInput.value).toBe("ounce/ounces")
     })
 
     //clears out the the input fields once button is clicked
@@ -93,6 +93,6 @@ describe('new recipe ingredient form functionality', () => {
         const button = screen.getByRole( 'button', { name: /add ingredient/i})
         fireEvent.change(measurementInput, { target: { value: "ounces"} })
         fireEvent.click(button)
-        expect(measurementInput.value).toBe("Select a measurment...")
+        expect(measurementInput.value).toBe("Select a measurement...")
     })
 })
