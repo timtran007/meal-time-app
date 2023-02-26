@@ -20,14 +20,14 @@ describe('render login form', () => {
 describe('login functionality', () => {
     it('should be able to type into email', () => {
         render(<LoginForm />);
-        const emailInput = screen.getByLabelText({ name: /email/i })
+        const emailInput = screen.getByLabelText(/email/i)
         fireEvent.change(emailInput, { target: { value: "tim@gmail.com"}})
         expect(emailInput.value).toBe("tim@gmail.com")
     })
 
     it('should be able to type into password input', () => {
         render(<LoginForm />);
-        const passwordInput = screen.getByLabelText({ name: /password/i })
+        const passwordInput = screen.getByLabelText(/password/i)
         fireEvent.change(passwordInput, { target: { value: "12345" }})
         expect(passwordInput.value).toBe("12345")
     })
@@ -42,7 +42,7 @@ describe('login functionality', () => {
     })
 
     it('should have empty password input once login button is clicked', () => {
-        const passwordInput = screen.getByLabelText({ name: /password/i })
+        const passwordInput = screen.getByLabelText(/password/i)
         const button = screen.getByRole('button', { name: /login/i })
         fireEvent.change(passwordInput, { target: { value: "12345" }})
         fireEvent.click(button)
