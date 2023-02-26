@@ -17,13 +17,13 @@ describe('render sign up form', () => {
 
     it('renders input of password', () => {
         render(<SignUpForm />);
-        const passwordInput = screen.getByLabelText(/password/i)
+        const passwordInput = screen.getByLabelText("Password:")
         expect(passwordInput).toBeInTheDocument()
     })
 
     it('renders input of passwordConfirmation', () => {
         render(<SignUpForm />);
-        const passwordConfirmationInput = screen.getByLabelText(/password confirmation/i)
+        const passwordConfirmationInput = screen.getByLabelText("Password Confirmation:")
         expect(passwordConfirmationInput).toBeInTheDocument()
     })
     
@@ -47,14 +47,14 @@ describe('sign up functionality', () => {
 
     it('should be able to type into password input', () => {
         render(<SignUpForm />);
-        const passwordInput = screen.getByLabelText(/password/i)
+        const passwordInput = screen.getByLabelText("Password:")
         fireEvent.change(passwordInput, { target: { value: "12345" }})
         expect(passwordInput.value).toBe("12345")
     })
 
     it('should be able to type into passwordConfirmation input', () => {
         render(<SignUpForm />);
-        const passwordConfirmationInput = screen.getByLabelText(/password confirmation/i)
+        const passwordConfirmationInput = screen.getByLabelText("Password Confirmation:")
         fireEvent.change(passwordConfirmationInput, { target: { value: "12345" }})
         expect(passwordConfirmationInput.value).toBe("12345")
     })
@@ -81,7 +81,7 @@ describe('sign up functionality', () => {
 
     it('should have empty password input once sign up button is clicked', () => {
         render(<SignUpForm />);
-        const passwordInput = screen.getByLabelText(/password/i)
+        const passwordInput = screen.getByLabelText("Password:")
         const button = screen.getByRole('button', { name: /sign up/i })
         fireEvent.change(passwordInput, { target: { value: "12345" }})
         fireEvent.click(button)
@@ -90,7 +90,7 @@ describe('sign up functionality', () => {
 
     it('should have empty passwordConfirmation input once sign up button is clicked', () => {
         render(<SignUpForm />);
-        const passwordConfirmationInput = screen.getByLabelText(/password confirmation/i)
+        const passwordConfirmationInput = screen.getByLabelText("Password Confirmation:")
         const button = screen.getByRole('button', { name: /sign up/i })
         fireEvent.change(passwordConfirmationInput, { target: { value: "12345" }})
         fireEventf.click(button)
