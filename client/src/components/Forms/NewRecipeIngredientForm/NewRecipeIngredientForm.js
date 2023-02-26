@@ -9,7 +9,7 @@ function NewRecipeIngredientForm() {
         name: '',
         category: 'Select a category...',
         quantity: '',
-        measurment: 'Select a measurement...'
+        measurement: 'Select a measurement...'
     }
 
     const [formData, setFormData] = useState(initialForm)
@@ -23,8 +23,18 @@ function NewRecipeIngredientForm() {
         })
     }
 
+    function handleSubmit(e) {
+        e.preventDefault()
+
+        //create post request to the end point /recipe_ingredients
+
+        //set state of the response from the post request to recipe
+
+        setFormData(initialForm)
+    }
+
   return (
-    <Form>
+    <Form onSubmit={handleSubmit}>
         <Form.Group as={Row}>
             <Col>
                 <Form.Control
@@ -54,6 +64,39 @@ function NewRecipeIngredientForm() {
                 </Form.Select>
             </Col>
         </Form.Group>
+        <Form.Group as={Row}>
+            <Col>
+                <Form.Control
+                    name='quantity'
+                    type='input'
+                    onChange={handleChange}
+                    value={formData.quantity}
+                    placeholder="Enter ingredient's quantity number..."
+                >
+                </Form.Control>
+            </Col>
+            <Col>
+            <Form.Select
+                    name='measurement'
+                    onChange={handleChange}
+                    value={formData.measurement}
+                >
+                    <option>Select a measurement...</option>
+                    <option value='cup/cups'>cup/cups</option>
+                    <option value='ounce/ounces'>ounce/ounces</option>
+                    <option value='tablespoon/tablespoons'>tablespoon/tablespoons</option>
+                    <option value='teaspoon/teaspoons'>teaspoon/teaspoons</option>
+                    <option value='quart/quarts'>quart/quarts</option>
+                </Form.Select>
+            </Col>
+        </Form.Group>
+        <div>
+            <Button
+                type="submit"
+            >
+                Add ingredient
+            </Button>
+        </div>
     </Form>
   )
 }
