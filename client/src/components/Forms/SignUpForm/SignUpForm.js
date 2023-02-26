@@ -23,8 +23,17 @@ function SignUpForm() {
         })
     }
 
+    function handleSubmit(e) {
+        e.preventDefault()
+        //write post request with end point of '/signup'
+
+        //set state of user to response give back to request
+
+        setFormData(initialFormData)
+    }
+
   return (
-    <Form>
+    <Form onSubmit={handleSubmit}>
         <Form.Group as={Row}>
             <Form.Label htmlFor='name'>
                 Name:
@@ -85,6 +94,13 @@ function SignUpForm() {
                 </Form.Control>
             </Col>
         </Form.Group>
+        <div>
+            <Button
+                type='submit'
+            >
+                Sign up
+            </Button>
+        </div>
     </Form>
   )
 }
