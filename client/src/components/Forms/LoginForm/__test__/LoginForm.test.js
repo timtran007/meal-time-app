@@ -29,7 +29,7 @@ describe('login functionality', () => {
         render(<LoginForm />);
         const passwordInput = screen.getByLabelText({ name: /password/i })
         fireEvent.change(passwordInput, { target: { value: "12345" }})
-        expect(emailInput.value).toBe("12345")
+        expect(passwordInput.value).toBe("12345")
     })
 
     it('should have empty email input once login button is clicked', () => {
