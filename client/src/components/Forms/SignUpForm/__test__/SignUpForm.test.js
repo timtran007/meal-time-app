@@ -66,7 +66,7 @@ describe('sign up functionality', () => {
         const nameInput = screen.getByLabelText(/name/i)
         const button = screen.getByRole('button', { name: /sign up/i })
         fireEvent.change(nameInput, { target: { value: "tim tran"}})
-        fireEventf.click(button)
+        fireEvent.click(button)
         expect(nameInput.value).toBe("")
     })
 
@@ -75,7 +75,7 @@ describe('sign up functionality', () => {
         const emailInput = screen.getByLabelText(/email/i)
         const button = screen.getByRole('button', { name: /sign up/i })
         fireEvent.change(emailInput, { target: { value: "tim@gmail.com"}})
-        fireEventf.click(button)
+        fireEvent.click(button)
         expect(emailInput.value).toBe("")
     })
 
@@ -85,7 +85,7 @@ describe('sign up functionality', () => {
         const button = screen.getByRole('button', { name: /sign up/i })
         fireEvent.change(passwordInput, { target: { value: "12345" }})
         fireEvent.click(button)
-        expect(passwordInput).toBe('')
+        expect(passwordInput.value).toBe('')
     })
 
     it('should have empty passwordConfirmation input once sign up button is clicked', () => {
@@ -93,7 +93,7 @@ describe('sign up functionality', () => {
         const passwordConfirmationInput = screen.getByLabelText("Password Confirmation:")
         const button = screen.getByRole('button', { name: /sign up/i })
         fireEvent.change(passwordConfirmationInput, { target: { value: "12345" }})
-        fireEventf.click(button)
+        fireEvent.click(button)
         expect(passwordConfirmationInput.value).toBe("")
     })
 })
