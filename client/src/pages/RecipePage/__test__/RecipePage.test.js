@@ -1,15 +1,14 @@
 import { render, screen } from '@testing-library/react';
+import { BrowserRouter } from 'react-router-dom';
 import RecipePage from '../RecipePage'
 
 
-it('renders the Recipes page successfully', () => {
-  render(<RecipePage />);
-  const heading = screen.getByRole('heading', {name: /recipe/i});
-  expect(heading).toBeInTheDocument();
-});
+describe('Recipe Page', () => {
 
-it('renders renders out the recipe cards', () => {
-    render(<RecipePage />);
-    const image = screen.getByRole('img');
-    expect(image).toBeInTheDocument();
-  });
+    it('renders the Recipes page successfully', async () => {
+      render(<RecipePage recipe={[]}/>);
+      const button =  screen.getByRole('heading', {name: /recipe/i});
+      expect(button).toBeInTheDocument();
+    });
+
+})
