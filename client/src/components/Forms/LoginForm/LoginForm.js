@@ -3,8 +3,12 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
+import { useHistory } from 'react-router-dom';
 
-function LoginForm() {
+function LoginForm({onLogin}) {
+    const history = useHistory()
+
+    const [errors, setErrors] = useState([])
 
     const initialFormData = {
         email: '',
@@ -24,13 +28,29 @@ function LoginForm() {
 
     function handleSubmit(e) {
         e.preventDefault()
-        //need to write post request to '/login'
-
-        //set state of user
-
+        fetch('/login', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(formData)
+        })
+        .then(resp => {
+            if(resp.ok) {
+                resp.json().then(data => onLogin(data))
+                history.push('/profile')
+            } else {
+                resp.json().then(error => setErrors(error.errors))
+            }
+        })
         setFormData(initialFormData)
     }
 
+    const displayErrors = errors.map(e => {
+        return(
+            <p key={e}>{e}</p>
+        )
+    })
   return (
     <Form onSubmit={handleSubmit}>
         <Form.Group as={Row}>
