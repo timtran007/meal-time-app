@@ -4,12 +4,25 @@ import DetailedRecipeCard from './components/Cards/DetailedRecipeCard/DetailedRe
 import LoginPage from './pages/LoginPage/LoginPage';
 import RecipePage from './pages/RecipePage/RecipePage';
 import SignupPage from './pages/SignupPage/SignupPage';
+import UserPage from './pages/UserPage/UserPage';
 
 
 
 function App() {
 
+  //user state
+  const [user, setUser] = useState(null)
+
   const [recipes, setRecipes] = useState([])
+
+  useEffect(() => {
+    fetch('/me')
+    .then(resp => {
+      if(resp.ok) {
+        resp.json().then(userData => setUser(userData))
+      }
+    })
+  }, [])
   
   useEffect(() => {
     fetch('/recipes')
@@ -30,8 +43,6 @@ function App() {
           <Route path='/recipes/:recipe_id'>
             <DetailedRecipeCard recipes={recipes}/>
           </Route>
-          
-
           {/* <Route exact path='/profile'>
             <UserPage />
           </Route>
@@ -43,13 +54,13 @@ function App() {
           </Route>
           <Route path='/profile/shopping-lists'>
             <UserShoppingListsPage />
-          </Route>
+          </Route> */}
           <Route path='/login'>
-            <LoginPage />
+            <LoginPage onLogin={setUser}/>
           </Route>
           <Route path='/sign-up'>
-            <SignupPage/>
-          </Route> */}
+            <SignupPage onSignup={setUser}/>
+          </Route>
         </Switch>
       
         
