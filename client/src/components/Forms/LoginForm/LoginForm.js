@@ -46,9 +46,9 @@ function LoginForm({onLogin}) {
         setFormData(initialFormData)
     }
 
-    const displayErrors = errors.map(e => {
+    const displayError = errors.map( e => {
         return(
-            <p key={e}>{e}</p>
+            <p key={e} style={{color:"red"}}>{e}</p>
         )
     })
   return (
@@ -89,6 +89,9 @@ function LoginForm({onLogin}) {
             >
                 Login
             </Button>
+        </div>
+        <div>
+            {displayError}
         </div>
     </Form>
   )
