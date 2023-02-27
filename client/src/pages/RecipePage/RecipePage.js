@@ -1,12 +1,22 @@
 import React from 'react'
 import RecipeCard from '../../../src/components/Cards/RecipeCard/RecipeCard'
 
-function RecipePage() {
+function RecipePage({recipes}) {
+    
   return (
     <div>
         <h2>Recipes</h2>
         <div>
-            <RecipeCard />
+            {recipes?recipes.map((recipe) => {
+                return(
+                    <div key={recipe.id}>
+                        <RecipeCard 
+                            recipe={recipe}
+                        />
+                    </div>
+                )
+            }):null}
+            
         </div>
     </div>
   )
