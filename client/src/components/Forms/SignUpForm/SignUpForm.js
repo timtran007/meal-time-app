@@ -3,8 +3,13 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
+import { useHistory } from 'react-router-dom';
 
-function SignUpForm() {
+function SignUpForm({onSignup}) {
+    const history = useHistory()
+
+    const [errors, setErrors] = useState([])
+
     const initialFormData = {
         name: '',
         email: '',
@@ -25,12 +30,29 @@ function SignUpForm() {
 
     function handleSubmit(e) {
         e.preventDefault()
-        //write post request with end point of '/signup'
-
-        //set state of user to response give back to request
-
+        fetch('/signup', {
+            method: "POST", 
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(formData)
+        })
+        .then(resp => {
+            if(resp.ok){
+                resp.json().then(data => onSignup(data))
+                history.push('/profile')
+            }else{
+                resp.json().then(error => setErrors(error.errors))
+            }
+        })
         setFormData(initialFormData)
     }
+
+    const displayError = errors.map( e => {
+        return(
+            <p key={e} style={{color:"red"}}>{e}</p>
+        )
+    })
 
   return (
     <Form onSubmit={handleSubmit}>
@@ -100,6 +122,9 @@ function SignUpForm() {
             >
                 Sign up
             </Button>
+        </div>
+        <div>
+            {displayError}
         </div>
     </Form>
   )
