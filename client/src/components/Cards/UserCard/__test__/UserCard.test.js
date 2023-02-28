@@ -4,9 +4,9 @@ import UserCard from '../UserCard'
 describe('UserCard', () => {
 
     it('renders User Card', () => {
-        render(<UserCard />);
-        const imageElement = screen.getByRole("img")
-        expect(imageElement).toBeInTheDocument()
+        render(<UserCard user={[]}/>);
+        const textElement = screen.getByText(/email/i)
+        expect(textElement).toBeInTheDocument()
     })
     
 })
