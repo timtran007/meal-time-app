@@ -43,10 +43,10 @@ function App() {
           <Route path='/recipes/:recipe_id'>
             <DetailedRecipeCard recipes={recipes}/>
           </Route>
-          {/* <Route exact path='/profile'>
-            <UserPage />
+          <Route exact path='/profile'>
+            <UserPage user={user}/>
           </Route>
-          <Route exact path='/profile/recipes'>
+          {/* <Route exact path='/profile/recipes'>
             <UserRecipesPage />
           </Route>
           <Route path='/profile/recipes/:recipe_id'>
@@ -55,6 +55,7 @@ function App() {
           <Route path='/profile/shopping-lists'>
             <UserShoppingListsPage />
           </Route> */}
+
           <Route path='/login'>
             <LoginPage onLogin={setUser}/>
           </Route>
