@@ -1,10 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import { Route, Switch } from 'react-router-dom';
 import DetailedRecipeCard from './components/Cards/DetailedRecipeCard/DetailedRecipeCard';
+import UserDetailedRecipeCard from './components/Cards/UserDetailedRecipeCard/UserDetailedRecipeCard';
 import LoginPage from './pages/LoginPage/LoginPage';
 import RecipePage from './pages/RecipePage/RecipePage';
 import SignupPage from './pages/SignupPage/SignupPage';
 import UserPage from './pages/UserPage/UserPage';
+import UserRecipesPage from './pages/UserRecipesPage/UserRecipesPage';
 
 
 
@@ -46,13 +48,13 @@ function App() {
           <Route exact path='/profile'>
             <UserPage user={user}/>
           </Route>
-          {/* <Route exact path='/profile/recipes'>
-            <UserRecipesPage />
+          <Route exact path='/profile/recipes'>
+            {user ? <UserRecipesPage userRecipes={user.recipes}/> : null}
           </Route>
           <Route path='/profile/recipes/:recipe_id'>
-            <UserDetailedRecipesPage />
+            {user ?<UserDetailedRecipeCard userRecipes={user.recipes}/>: null}
           </Route>
-          <Route path='/profile/shopping-lists'>
+          {/* <Route path='/profile/shopping-lists'>
             <UserShoppingListsPage />
           </Route> */}
 
