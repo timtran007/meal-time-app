@@ -38,7 +38,7 @@ function UserDetailedRecipeCard({userRecipes}) {
             </Card>
         </div>
     )} else{
-        return "Loading"
+        return "Loading..."
     }
 
 }
