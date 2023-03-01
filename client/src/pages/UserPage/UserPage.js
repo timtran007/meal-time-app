@@ -3,7 +3,7 @@ import UserCard from '../../components/Cards/UserCard/UserCard'
 import FollowerCard from '../../components/Cards/FollowerCard/FollowerCard'
 import FollowingCard from '../../components/Cards/FollowingCard/FollowingCard'
 
-function UserPage({user, followers, following}) {
+function UserPage({user, followers, following, onDeleteFollowingShip}) {
 
   return (
     <div>
@@ -21,7 +21,7 @@ function UserPage({user, followers, following}) {
         { following ? following.map(f  => {
           return(
             <div key={f.id}>
-              <FollowingCard following={f}/>
+              <FollowingCard user={user} following={f} onDeleteFollowingShip={onDeleteFollowingShip}/>
             </div>
           )
         }) : "loading"}
