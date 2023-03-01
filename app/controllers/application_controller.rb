@@ -12,7 +12,7 @@ class ApplicationController < ActionController::API
     end
 
     def render_unprocessable_entity(invalid)
-        render json: {error: invalid.record.errors.full_messages}, status: 422
+        render json: {errors: invalid.record.errors.full_messages}, status: 422
     end
 
     def authorize
