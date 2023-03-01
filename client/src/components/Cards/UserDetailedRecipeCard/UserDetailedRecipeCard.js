@@ -1,10 +1,26 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
 import Card from 'react-bootstrap/Card'
+import Button from 'react-bootstrap/Button'
+import NewRecipeIngredientForm from '../../Forms/NewRecipeIngredientForm/NewRecipeIngredientForm'
 
 
 function UserDetailedRecipeCard({userRecipes}) {
+    // 1. create state for toggling of edit button
+    // 2. adds the edit form here for the recipe
+    // 3. ability to add in ingredients
+    
+
     const params = useParams()
+
+    function handleEdit(e) {
+        //builds out the edit function
+    }
+
+    function handleAddIngredients(e) {
+        //builds out the edit function
+    }
+
     const recipe = userRecipes.find(recipe => recipe.id === parseInt(params.recipe_id))
     if(recipe){
     return(
@@ -35,6 +51,11 @@ function UserDetailedRecipeCard({userRecipes}) {
                     <Card.Text>
                         Likes: {recipe.likes}
                     </Card.Text>
+                    <Button onClick={handleAddIngredients}>add ingredients</Button>
+                        <div>
+                            <NewRecipeIngredientForm />
+                        </div>
+                    <Button onClick={handleEdit}>edit my recipe</Button>
             </Card>
         </div>
     )} else{
