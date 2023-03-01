@@ -35,6 +35,9 @@ function App() {
     .then(data => setRecipes(data))
   }, [])
 
+  function onDeleteFollowingShip(deletedUser) {
+    //write function to set the state
+  }
 
   return (
     <div className="App">
@@ -50,7 +53,7 @@ function App() {
             <DetailedRecipeCard recipes={recipes}/>
           </Route>
           <Route exact path='/profile'>
-            {user ? <UserPage user={user} followers={user.followers} following={user.following}/> : "loading"}
+            {user ? <UserPage user={user} followers={user.followers} following={user.following} onDeleteFollowingShip={onDeleteFollowingShip}/> : "loading"}
           </Route>
           <Route exact path='/profile/recipes'>
             {user ? <UserRecipesPage userRecipes={user.recipes}/> : "loading"}
