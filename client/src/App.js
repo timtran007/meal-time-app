@@ -36,7 +36,11 @@ function App() {
   }, [])
 
   function onDeleteFollowingShip(deletedUser) {
-    //write function to set the state
+    //write function to set the state of the deleted followingship
+  }
+
+  function onSubmitNewRecipe(newRecipe) {
+    //write function to set the new state of user to include this new recipe
   }
 
   return (
@@ -56,7 +60,7 @@ function App() {
             {user ? <UserPage user={user} followers={user.followers} following={user.following} onDeleteFollowingShip={onDeleteFollowingShip}/> : "loading"}
           </Route>
           <Route exact path='/profile/recipes'>
-            {user ? <UserRecipesPage userRecipes={user.recipes}/> : "loading"}
+            {user ? <UserRecipesPage userRecipes={user.recipes} onSubmitNewRecipe={onSubmitNewRecipe}/> : "loading"}
           </Route>
           <Route path='/profile/recipes/:recipe_id'>
             {user ? <UserDetailedRecipeCard userRecipes={user.recipes}/>: "loading"}
