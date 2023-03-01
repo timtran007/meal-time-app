@@ -7,6 +7,7 @@ import RecipePage from './pages/RecipePage/RecipePage';
 import SignupPage from './pages/SignupPage/SignupPage';
 import UserPage from './pages/UserPage/UserPage';
 import UserRecipesPage from './pages/UserRecipesPage/UserRecipesPage';
+import UserShoppingListsPage from './pages/UserShoppingListsPage/UserShoppingListsPage';
 
 
 
@@ -54,9 +55,9 @@ function App() {
           <Route path='/profile/recipes/:recipe_id'>
             {user ? <UserDetailedRecipeCard userRecipes={user.recipes}/>: "loading"}
           </Route>
-          {/* <Route path='/profile/shopping-lists'>
-            <UserShoppingListsPage />
-          </Route> */}
+          <Route path='/profile/shopping-lists'>
+            {user ? <UserShoppingListsPage user={user}/> : "loading"}
+          </Route>
 
           <Route path='/login'>
             <LoginPage onLogin={setUser}/>
