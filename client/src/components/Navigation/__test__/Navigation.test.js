@@ -1,12 +1,12 @@
 import { render, screen } from '@testing-library/react';
-import Nav from '../Nav'
+import Navigation from '../Navigation'
 
 const mockedSetUser = jest.fn()
 
-describe('Nav when user is logged out', () => {
+describe('Navigation when user is logged out', () => {
     it('renders the login page successfully', () => {
         render(
-            <Nav 
+            <Navigation 
                 user={[]}
                 setUser={mockedSetUser}
             />);
@@ -16,10 +16,10 @@ describe('Nav when user is logged out', () => {
 })
 
 
-describe('Nav when user is logged in', () => {
+describe('Navigation when user is logged in', () => {
     it('renders the login page successfully', () => {
         render(
-            <Nav 
+            <Navigation 
                 user={[{
                     email: 'tim@gmail.com'
                 }]}
