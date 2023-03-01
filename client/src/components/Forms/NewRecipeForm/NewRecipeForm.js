@@ -4,7 +4,7 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 
-function NewRecipeForm() {
+function NewRecipeForm({onSubmitNewRecipe}) {
     const initialForm = {
         title: '',
         image_url: '',
@@ -15,6 +15,8 @@ function NewRecipeForm() {
     }
 
     const [formData, setFormData] = useState(initialForm)
+
+    const [errors, setErrors] = useState([])
 
     function handleChange(e) {
         const key = e.target.name
@@ -27,7 +29,20 @@ function NewRecipeForm() {
 
     function handleSubmit(e) {
         e.preventDefault()
-
+        fetch('/recipes', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(formData)
+        })
+        .then(resp => {
+            if(resp.ok) {
+                resp.json().then(newRecipe => onSubmitNewRecipe(newRecipe))
+            } else {
+                resp.json().then(error => setErrors(error.errors))
+            }
+        })
         //write post request to the endpoint '/recipes'
 
         //set state of the new recipe within user recipes
