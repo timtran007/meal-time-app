@@ -2,12 +2,14 @@ import React, {useEffect, useState} from 'react';
 import { Route, Switch } from 'react-router-dom';
 import DetailedRecipeCard from './components/Cards/DetailedRecipeCard/DetailedRecipeCard';
 import UserDetailedRecipeCard from './components/Cards/UserDetailedRecipeCard/UserDetailedRecipeCard';
+import Navigation from './components/Navigation/Navigation';
 import LoginPage from './pages/LoginPage/LoginPage';
 import RecipePage from './pages/RecipePage/RecipePage';
 import SignupPage from './pages/SignupPage/SignupPage';
 import UserPage from './pages/UserPage/UserPage';
 import UserRecipesPage from './pages/UserRecipesPage/UserRecipesPage';
 import UserShoppingListsPage from './pages/UserShoppingListsPage/UserShoppingListsPage';
+
 
 
 
@@ -37,6 +39,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
+        <Navigation user={user} setUser={setUser} />
         <h1>Welcome to Meal Time</h1>
         
         <Switch>
