@@ -46,13 +46,13 @@ function App() {
             <DetailedRecipeCard recipes={recipes}/>
           </Route>
           <Route exact path='/profile'>
-            <UserPage user={user}/>
+            {user ? <UserPage user={user} followers={user.followers} following={user.following}/> : "loading"}
           </Route>
           <Route exact path='/profile/recipes'>
-            {user ? <UserRecipesPage userRecipes={user.recipes}/> : null}
+            {user ? <UserRecipesPage userRecipes={user.recipes}/> : "loading"}
           </Route>
           <Route path='/profile/recipes/:recipe_id'>
-            {user ?<UserDetailedRecipeCard userRecipes={user.recipes}/>: null}
+            {user ? <UserDetailedRecipeCard userRecipes={user.recipes}/>: "loading"}
           </Route>
           {/* <Route path='/profile/shopping-lists'>
             <UserShoppingListsPage />
