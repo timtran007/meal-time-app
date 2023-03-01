@@ -17,15 +17,18 @@ function ShoppingListCard({shopping_list}) {
                         <div>
                             {ingredient.name}
                         </div>
+                        <div>
+                        <Button onClick={() => {}}>edit</Button>
+                        <Button onClick={() => {}}>delete</Button>
+                        </div>
                         <Badge>
                             {ingredient.category}
                         </Badge>
-                    
                     </ListGroup.Item>
                 </ListGroup>
-                
             )
         })}
+        
     </Card>
   )
 }
