@@ -12,13 +12,17 @@ function UserPage({user, followers, following}) {
       <h3>Followers</h3>
         {followers ? followers.map(follower  => {
           return(
+            <div key={follower.id}>
             <FollowerCard follower={follower}/>
+            </div>
           )
         }): 'loading'}
       <h3>Following</h3>
-        { following !== undefined ? following.map(following  => {
+        { following ? following.map(f  => {
           return(
-            <FollowingCard />
+            <div key={f.id}>
+              <FollowingCard following={f}/>
+            </div>
           )
         }) : "loading"}
     </div>
