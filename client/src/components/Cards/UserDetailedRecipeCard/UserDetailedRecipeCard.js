@@ -18,12 +18,14 @@ function UserDetailedRecipeCard({userRecipes, onSubmitEditRecipe}) {
 
     const [showEditForm, setShowEditForm] = useState(false)
 
+    const [showIngredientForm, setShowIngredientForm] = useState(false)
+
     function handleShowEditForm() {
         setShowEditForm(!showEditForm)
     }
 
-    function handleAddIngredients(e) {
-        //builds out the edit function
+    function handleClickAddIngredients(e) {
+        setShowIngredientForm(!showIngredientForm)
     }
 
     function handleEditIngredient(e) {
@@ -64,9 +66,9 @@ function UserDetailedRecipeCard({userRecipes, onSubmitEditRecipe}) {
                     <Card.Text>
                         Likes: {recipe.likes}
                     </Card.Text>
-                    <Button onClick={handleAddIngredients}>add ingredients</Button>
+                    <Button onClick={handleClickAddIngredients}>add ingredients</Button>
                         <div>
-                            <NewRecipeIngredientForm />
+                            { showIngredientForm ? <NewRecipeIngredientForm /> : null}
                         </div>
                     <Button onClick={handleShowEditForm}>edit</Button>
                         {showEditForm ? <EditRecipeForm onSubmitEditRecipe={onSubmitEditRecipe} recipe={recipe}/> : null}
