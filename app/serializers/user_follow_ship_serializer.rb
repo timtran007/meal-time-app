@@ -1,5 +1,5 @@
 class UserFollowShipSerializer < ActiveModel::Serializer
-  attributes :id, :name, :email, :image_url, :following, :followers, :shopping_lists, :recipes
+  attributes :id, :name, :email, :image_url, :following, :followers, :shopping_lists, :recipes, :following_ships
 
   def following
     object.followings.map do |following| {
@@ -7,7 +7,8 @@ class UserFollowShipSerializer < ActiveModel::Serializer
       name: following.name,
       email: following.email,
       image_url: following.image_url,
-      recipes: following.recipes
+      recipes: following.recipes,
+      following_ships: following.following_ships
       }
     end
   end
@@ -37,8 +38,8 @@ class UserFollowShipSerializer < ActiveModel::Serializer
       title: recipe.title,
       instructions: recipe.instructions,
       image_url: recipe.image_url,
-      cook_time: recipe.cook_time_in_minutes,
-      prep_time: recipe.prep_time_in_minutes,
+      cook_time_in_minutes: recipe.cook_time_in_minutes,
+      prep_time_in_minutes: recipe.prep_time_in_minutes,
       likes: recipe.likes,
       recipe_ingredients: recipe.recipe_ingredients
     }
