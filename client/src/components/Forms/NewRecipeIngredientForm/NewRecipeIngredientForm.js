@@ -4,15 +4,18 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 
-function NewRecipeIngredientForm() {
+function NewRecipeIngredientForm({recipe, onAddRecipeIngredient}) {
     const initialForm = {
         name: '',
         category: 'Select a category...',
         quantity: '',
-        measurement: 'Select a measurement...'
+        measurement: 'Select a measurement...',
+        recipe_id: recipe.id
     }
 
     const [formData, setFormData] = useState(initialForm)
+
+    const [errors, setErrors] = useState([])
 
     function handleChange(e) {
         const key = e.target.name
@@ -25,13 +28,29 @@ function NewRecipeIngredientForm() {
 
     function handleSubmit(e) {
         e.preventDefault()
-
-        //create post request to the end point /recipe_ingredients
-
-        //set state of the response from the post request to recipe
+        fetch(`/recipe_ingredients`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(formData)
+        })
+        .then(resp => {
+            if(resp.ok) {
+                resp.json().then(newRecipeIngredient => onAddRecipeIngredient(newRecipeIngredient))
+            } else {
+                resp.json().then(error => setErrors(error.errors))
+            }
+        })
 
         setFormData(initialForm)
     }
+
+    const displayError = errors.map( e => {
+        return(
+            <p key={e} style={{color:"red"}}>{e}</p>
+        )
+    })
 
   return (
     <Form onSubmit={handleSubmit}>
@@ -96,6 +115,9 @@ function NewRecipeIngredientForm() {
             >
                 Add ingredient
             </Button>
+        </div>
+        <div>
+            {displayError}
         </div>
     </Form>
   )

@@ -51,6 +51,10 @@ function App() {
     //write function to set new state of the user based on the edited recipe of the user, user.recipes.find
   }
 
+  function onAddRecipeIngredient(newRecipeIngredient) {
+    //write function to set new state of the user based on the added recipe's ingredient.. user.recipe.find .ingredients
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -71,7 +75,7 @@ function App() {
             {user ? <UserRecipesPage userRecipes={user.recipes} onSubmitNewRecipe={onSubmitNewRecipe} onDeleteRecipe={onDeleteRecipe}/> : "loading"}
           </Route>
           <Route path='/profile/recipes/:recipe_id'>
-            {user ? <UserDetailedRecipeCard userRecipes={user.recipes} onSubmitEditRecipe={onSubmitEditRecipe}/>: "loading"}
+            {user ? <UserDetailedRecipeCard userRecipes={user.recipes} onSubmitEditRecipe={onSubmitEditRecipe} onAddRecipeIngredient={onAddRecipeIngredient}/>: "loading"}
           </Route>
           <Route path='/profile/shopping-lists'>
             {user ? <UserShoppingListsPage user={user}/> : "loading"}
