@@ -43,6 +43,14 @@ function App() {
     //write function to set the new state of user to include this new recipe
   }
 
+  function onDeleteRecipe(deletedRecipe) {
+    //write function to set the new state of user based on the deleted recipe
+  }
+
+  function onSubmitEditRecipe(editedRecipe) {
+    //write function to set new state of the user based on the edited recipe of the user, user.recipes.find
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -60,10 +68,10 @@ function App() {
             {user ? <UserPage user={user} followers={user.followers} following={user.following} onDeleteFollowingShip={onDeleteFollowingShip}/> : "loading"}
           </Route>
           <Route exact path='/profile/recipes'>
-            {user ? <UserRecipesPage userRecipes={user.recipes} onSubmitNewRecipe={onSubmitNewRecipe}/> : "loading"}
+            {user ? <UserRecipesPage userRecipes={user.recipes} onSubmitNewRecipe={onSubmitNewRecipe} onDeleteRecipe={onDeleteRecipe}/> : "loading"}
           </Route>
           <Route path='/profile/recipes/:recipe_id'>
-            {user ? <UserDetailedRecipeCard userRecipes={user.recipes}/>: "loading"}
+            {user ? <UserDetailedRecipeCard userRecipes={user.recipes} onSubmitEditRecipe={onSubmitEditRecipe}/>: "loading"}
           </Route>
           <Route path='/profile/shopping-lists'>
             {user ? <UserShoppingListsPage user={user}/> : "loading"}

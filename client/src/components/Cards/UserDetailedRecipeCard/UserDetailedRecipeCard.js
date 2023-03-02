@@ -1,11 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useParams } from 'react-router-dom'
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 import NewRecipeIngredientForm from '../../Forms/NewRecipeIngredientForm/NewRecipeIngredientForm'
+import EditRecipeForm from '../../Forms/EditRecipeForm/EditRecipeForm'
 
 
-function UserDetailedRecipeCard({userRecipes}) {
+function UserDetailedRecipeCard({userRecipes, onSubmitEditRecipe}) {
     // 1. create state for toggling of edit button
     // 2. adds the edit form here for the recipe
     // 3. ability to add in ingredients
@@ -13,12 +14,21 @@ function UserDetailedRecipeCard({userRecipes}) {
 
     const params = useParams()
 
-    function handleEdit(e) {
-        //builds out the edit function
+    const [errors, setErrors] = useState([])
+
+    const [showEditForm, setShowEditForm] = useState(false)
+
+    function handleShowEditForm() {
+        setShowEditForm(!showEditForm)
     }
 
     function handleAddIngredients(e) {
         //builds out the edit function
+    }
+
+    function handleEditIngredient(e) {
+        //create patch request to update the recipe's ingredient
+        //pass information down from the App.js updating the User's Recipes' Recipe Ingredients
     }
 
     const recipe = userRecipes.find(recipe => recipe.id === parseInt(params.recipe_id))
@@ -42,9 +52,12 @@ function UserDetailedRecipeCard({userRecipes}) {
                     <Card.Body>
                         Ingredients: {recipe.recipe_ingredients.map(ingredient => {
                             return(
+                                <Card.Body key={ingredient.id}>
                                 <Card.Text key={ingredient.id}>
                                     {ingredient.name} - {ingredient.quantity} {ingredient.measurement}
                                 </Card.Text>
+                                <Button onClick={handleEditIngredient}>edit</Button>
+                                </Card.Body>
                             )
                         })}
                     </Card.Body>
@@ -55,7 +68,8 @@ function UserDetailedRecipeCard({userRecipes}) {
                         <div>
                             <NewRecipeIngredientForm />
                         </div>
-                    <Button onClick={handleEdit}>edit my recipe</Button>
+                    <Button onClick={handleShowEditForm}>edit</Button>
+                        {showEditForm ? <EditRecipeForm onSubmitEditRecipe={onSubmitEditRecipe} recipe={recipe}/> : null}
             </Card>
         </div>
     )} else{

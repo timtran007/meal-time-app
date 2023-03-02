@@ -4,7 +4,7 @@ import NewRecipeForm from '../../components/Forms/NewRecipeForm/NewRecipeForm'
 import Button from 'react-bootstrap/Button'
 
 
-function UserRecipesPage({userRecipes, onSubmitNewRecipe}) {
+function UserRecipesPage({userRecipes, onSubmitNewRecipe, onDeleteRecipe}) {
 
   const [showForm, setShowForm] = useState(false)
   function handleShowForm(e) {
@@ -19,7 +19,7 @@ function UserRecipesPage({userRecipes, onSubmitNewRecipe}) {
             {userRecipes ? userRecipes.map(recipe => {
                 return(
                     <div key={recipe.id}>
-                        <UserRecipeCard recipe={recipe}/>
+                        <UserRecipeCard recipe={recipe} onDeleteRecipe={onDeleteRecipe}/>
                     </div>
                 )
             }): "Loading"}

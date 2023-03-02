@@ -1,18 +1,33 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 
-function UserRecipeCard({recipe}) {
+
+function UserRecipeCard({recipe, onDeleteRecipe}) {
     const history = useHistory()
     
-    function handleClick(e) {
+    const [errors, setErrors] = useState([])
+    
+    function handleClickForDetails(e) {
         const recipeId = e.target.id
         history.push(`/profile/recipes/${recipeId}`)
     }
 
-    function handleDelete(e){
-        //handle delete function 
+    function handleDeleteRecipe(e){
+        //handle delete function
+        debugger
+        const recipeId = recipe.id 
+        fetch(`/recipes/${recipe.id}`, {
+            method: "DELETE"
+        })
+        .then(resp => {
+            if(resp.ok) {
+                resp.json().then(deletedRecipe => onDeleteRecipe(deletedRecipe))
+            } else {
+                resp.json().then( error => setErrors(error.errors))
+            }
+        })
     }
     
   return (
@@ -33,7 +48,7 @@ function UserRecipeCard({recipe}) {
                     id={recipe.id}
                     size="sm" 
                     variant="secondary"
-                    onClick={handleClick}
+                    onClick={handleClickForDetails}
                 >
                     More Details
                 </Button>
@@ -41,10 +56,11 @@ function UserRecipeCard({recipe}) {
                     id={recipe.id}
                     size="sm" 
                     variant="secondary"
-                    onClick={handleDelete}
+                    onClick={handleDeleteRecipe}
                 >
                     Delete
                 </Button>
+                
             </div>
         </Card>
     </div>
