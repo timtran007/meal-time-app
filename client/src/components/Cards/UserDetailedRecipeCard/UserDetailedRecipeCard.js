@@ -4,9 +4,10 @@ import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 import NewRecipeIngredientForm from '../../Forms/NewRecipeIngredientForm/NewRecipeIngredientForm'
 import EditRecipeForm from '../../Forms/EditRecipeForm/EditRecipeForm'
+import EditRecipeIngredientForm from '../../Forms/EditRecipeIngredientForm/EditRecipeIngredientForm'
 
 
-function UserDetailedRecipeCard({userRecipes, onSubmitEditRecipe, onAddRecipeIngredient}) {
+function UserDetailedRecipeCard({userRecipes, onSubmitEditRecipe, onAddRecipeIngredient, onEditRecipeIngredient}) {
     // 1. create state for toggling of edit button
     // 2. adds the edit form here for the recipe
     // 3. ability to add in ingredients
@@ -20,7 +21,11 @@ function UserDetailedRecipeCard({userRecipes, onSubmitEditRecipe, onAddRecipeIng
 
     const [showIngredientForm, setShowIngredientForm] = useState(false)
 
-    function handleShowEditForm() {
+    const [showEditIngredientForm, setEditIngredientForm] = useState(false)
+
+    const [targetID, setTargetID] = useState(0)
+
+    function handleShowEditRecipeForm() {
         setShowEditForm(!showEditForm)
     }
 
@@ -29,10 +34,10 @@ function UserDetailedRecipeCard({userRecipes, onSubmitEditRecipe, onAddRecipeIng
     }
 
     function handleEditIngredient(e) {
-        //create patch request to update the recipe's ingredient
-        //pass information down from the App.js updating the User's Recipes' Recipe Ingredients
+        setEditIngredientForm(!showEditIngredientForm)
+        setTargetID(parseInt(e.target.id))
+        
     }
-
     function handleDeleteIngredient() {
 
     }
@@ -62,8 +67,9 @@ function UserDetailedRecipeCard({userRecipes, onSubmitEditRecipe, onAddRecipeIng
                                 <Card.Text key={ingredient.id}>
                                     {ingredient.name} - {ingredient.quantity} {ingredient.measurement}
                                 </Card.Text>
-                                <Button onClick={handleEditIngredient}>edit</Button>
-                                <Button onClick={handleDeleteIngredient}>delete</Button>
+                                <Button id={ingredient.id} onClick={handleEditIngredient}>edit</Button>
+                                {showEditIngredientForm && targetID === ingredient.id ? <EditRecipeIngredientForm ingredient={ingredient} recipe={recipe} onEditRecipeIngredient={onEditRecipeIngredient} ingredientId={ingredient.id}/> : null}
+                                <Button id={ingredient.id} onClick={handleDeleteIngredient}>delete</Button>
                                 </Card.Body>
                             )
                         })}
@@ -75,7 +81,7 @@ function UserDetailedRecipeCard({userRecipes, onSubmitEditRecipe, onAddRecipeIng
                         <div>
                             { showIngredientForm ? <NewRecipeIngredientForm recipe={recipe} onAddRecipeIngredient={onAddRecipeIngredient}/> : null}
                         </div>
-                    <Button onClick={handleShowEditForm}>edit</Button>
+                    <Button onClick={handleShowEditRecipeForm}>edit</Button>
                         {showEditForm ? <EditRecipeForm onSubmitEditRecipe={onSubmitEditRecipe} recipe={recipe}/> : null}
             </Card>
         </div>
