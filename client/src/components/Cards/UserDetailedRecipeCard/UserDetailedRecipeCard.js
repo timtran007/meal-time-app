@@ -7,7 +7,7 @@ import EditRecipeForm from '../../Forms/EditRecipeForm/EditRecipeForm'
 import EditRecipeIngredientForm from '../../Forms/EditRecipeIngredientForm/EditRecipeIngredientForm'
 
 
-function UserDetailedRecipeCard({userRecipes, onSubmitEditRecipe, onAddRecipeIngredient, onEditRecipeIngredient}) {
+function UserDetailedRecipeCard({userRecipes, onSubmitEditRecipe, onAddRecipeIngredient, onEditRecipeIngredient, onDeleteRecipeIngredient}) {
     // 1. create state for toggling of edit button
     // 2. adds the edit form here for the recipe
     // 3. ability to add in ingredients
@@ -38,7 +38,18 @@ function UserDetailedRecipeCard({userRecipes, onSubmitEditRecipe, onAddRecipeIng
         setTargetID(parseInt(e.target.id))
         
     }
-    function handleDeleteIngredient() {
+    function handleDeleteIngredient(e) {
+        const ingredientId = e.target.id
+        fetch(`/recipe_ingredients/${ingredientId}`, {
+            method: "DELETE"
+        })
+        .then(resp => {
+            if(resp.ok){
+                resp.json().then(deletedIngredient => onDeleteRecipeIngredient(deletedIngredient))
+            } else {
+                resp.json().then(error => setErrors(error.errors))
+            }
+        })
 
     }
 
