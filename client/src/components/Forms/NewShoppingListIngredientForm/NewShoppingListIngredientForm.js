@@ -4,13 +4,16 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 
-function NewShoppingListIngredientForm() {
+function NewShoppingListIngredientForm({shopping_list, onAddNewListIngredient}) {
     const initialFormData = {
         name: '',
-        category: 'Select a category...'
+        category: 'Select a category...',
+        shopping_list_id: shopping_list.id
     }
 
     const [formData, setFormData] = useState(initialFormData)
+
+    const [errors, setErrors] = useState([])
 
     function handleChange(e) {
         const key = e.target.name
@@ -22,9 +25,29 @@ function NewShoppingListIngredientForm() {
     }
 
     function handleSubmit(e) {
-        e.preventDefault()   
+        e.preventDefault()
+        fetch('/ingredients', {
+            method: "POST", 
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(formData)
+        })
+        .then( resp => {
+            if(resp.ok) {
+                resp.json().then(newIngredient => onAddNewListIngredient(newIngredient))
+            } else {
+                resp.json().then(error => setErrors(error.errors))
+            }
+        })
         setFormData(initialFormData)
     }
+
+    const displayError = errors.map( e => {
+        return(
+            <p key={e} style={{color:"red"}}>{e}</p>
+        )
+    })
 
   return (
     <Form onSubmit={handleSubmit}>
@@ -63,6 +86,11 @@ function NewShoppingListIngredientForm() {
                     add ingredient
                 </Button>
             </Col>
+            <Row>
+                <Col>
+                {displayError}
+                </Col>
+            </Row>
         </Row>
     </Form>
   )

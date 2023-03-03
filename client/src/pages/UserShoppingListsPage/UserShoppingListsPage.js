@@ -4,7 +4,7 @@ import ShoppingListCard from '../../components/Cards/ShoppingListCard/ShoppingLi
 import NewShoppingListIngredientForm from '../../components/Forms/NewShoppingListIngredientForm/NewShoppingListIngredientForm'
 import NewShoppingListForm from '../../components/Forms/NewShoppingListForm/NewShoppingListForm'
 
-function UserShoppingListsPage({user, onSubmitNewList, onDeleteShoppingList}) {
+function UserShoppingListsPage({user, onSubmitNewList, onDeleteShoppingList, onAddNewListIngredient, onDeleteListIngredient}) {
 
   const [showAddListForm, setAddListForm] = useState(false)
   const [errors, setErrors] = useState([])
@@ -27,17 +27,24 @@ function UserShoppingListsPage({user, onSubmitNewList, onDeleteShoppingList}) {
       }
     })
   }
+  
+  const displayError = errors.map( e => {
+    return(
+        <p key={e} style={{color:"red"}}>{e}</p>
+    )
+  })
 
   return (
     <div>
         <h2>My Shopping Lists</h2>
         <Button onClick={handleShowForm}>Add a Shopping List</Button>
+        <div>{displayError}</div>
         {showAddListForm ? <NewShoppingListForm user={user} onSubmitNewList={onSubmitNewList}/> : null}
         {user.shopping_lists.map(shopping_list => {
             return(
                 <div key={shopping_list.id}>
-                    <ShoppingListCard shopping_list={shopping_list}/>
-                    <NewShoppingListIngredientForm />
+                    <ShoppingListCard shopping_list={shopping_list} onDeleteListIngredient={onDeleteListIngredient}/>
+                    <NewShoppingListIngredientForm onAddNewListIngredient={onAddNewListIngredient} shopping_list={shopping_list}/>
                     <Button id={shopping_list.id} onClick={handleDeleteList}>delete list</Button>
                 </div>
             )

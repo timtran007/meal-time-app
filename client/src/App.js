@@ -71,6 +71,14 @@ function App() {
     //write function to set new state of the user based on the deleted shopping list
   }
 
+  function onAddNewListIngredient(newIngredient) {
+    //write fuction to set state of the user with a new ingredient added to their shopping lists
+  }
+
+  function onDeleteListIngredient(deletedIngredient) {
+    //write function to set state of the user with the deleted ingredient filtered out of the their shopping lists
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -79,7 +87,7 @@ function App() {
         
         <Switch>
           <Route exact path='/'>
-            <RecipePage recipes={recipes}/>
+            { user ? <RecipePage recipes={recipes} user={user} following={user.following}/> : "loading"}
           </Route>
           <Route path='/recipes/:recipe_id'>
             <DetailedRecipeCard recipes={recipes}/>
@@ -94,7 +102,7 @@ function App() {
             {user ? <UserDetailedRecipeCard userRecipes={user.recipes} onSubmitEditRecipe={onSubmitEditRecipe} onAddRecipeIngredient={onAddRecipeIngredient} onEditRecipeIngredient={onEditRecipeIngredient} onDeleteRecipeIngredient={onDeleteRecipeIngredient}/>: "loading"}
           </Route>
           <Route path='/profile/shopping-lists'>
-            {user ? <UserShoppingListsPage user={user} onSubmitNewList={onSubmitNewList} onDeleteShoppingList={onDeleteShoppingList}/> : "loading"}
+            {user ? <UserShoppingListsPage user={user} onSubmitNewList={onSubmitNewList} onDeleteShoppingList={onDeleteShoppingList} onAddNewListIngredient={onAddNewListIngredient} onDeleteListIngredient={onDeleteListIngredient}/> : "loading"}
           </Route>
 
           <Route path='/login'>
