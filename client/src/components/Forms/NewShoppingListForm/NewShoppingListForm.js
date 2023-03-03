@@ -4,9 +4,10 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 
-function NewShoppingListForm() {
+function NewShoppingListForm({onSubmitNewList}) {
 
     const [formDataName, setFormDataName] = useState('')
+    const [errors, setErrors] = useState([])
 
     function handleChange(e) {
         setFormDataName(e.target.value)
@@ -14,12 +15,28 @@ function NewShoppingListForm() {
 
     function handleSubmit(e) {
         e.preventDefault()
-        //create post request with endpoint '/shopping_lists'
-
-        //set state for of the user
-
+        fetch('/shopping_lists', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(formDataName)
+        })
+        .then(resp => {
+            if(resp.ok) {
+                resp.json().then(newShoppingList => onSubmitNewList(newShoppingList))
+            } else {
+                resp.json().then(error => error.errors)
+            }
+        })
         setFormDataName('')
     }
+
+    const displayError = errors.map( e => {
+        return(
+            <p key={e} style={{color:"red"}}>{e}</p>
+        )
+    })
 
   return (
     <Form onSubmit={handleSubmit}>
@@ -47,6 +64,7 @@ function NewShoppingListForm() {
                 </Button>
             </Col>
         </Row>
+        {displayError}
     </Form>
   )
 }
