@@ -16,7 +16,6 @@ function UserRecipeCard({recipe, onDeleteRecipe}) {
 
     function handleDeleteRecipe(e){
         //handle delete function
-        debugger
         const recipeId = recipe.id 
         fetch(`/recipes/${recipe.id}`, {
             method: "DELETE"

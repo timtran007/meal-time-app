@@ -33,7 +33,6 @@ function EditRecipeIngredientForm({recipe, ingredientId, onEditRecipeIngredient}
 
     function handleSubmit(e) {
         e.preventDefault()
-        debugger
         fetch(`/recipe_ingredients/${ingredientId}`, {
             method: "PATCH",
             headers: {
@@ -45,7 +44,6 @@ function EditRecipeIngredientForm({recipe, ingredientId, onEditRecipeIngredient}
         .then(resp => {
             if(resp.ok) {
                 resp.json().then(editedRecipeIngredient => {
-                    debugger
                     onEditRecipeIngredient(editedRecipeIngredient)
                 })
             } else {
