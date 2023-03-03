@@ -4,17 +4,30 @@ import ShoppingListCard from '../../components/Cards/ShoppingListCard/ShoppingLi
 import NewShoppingListIngredientForm from '../../components/Forms/NewShoppingListIngredientForm/NewShoppingListIngredientForm'
 import NewShoppingListForm from '../../components/Forms/NewShoppingListForm/NewShoppingListForm'
 
-function UserShoppingListsPage({user, onSubmitNewList}) {
+function UserShoppingListsPage({user, onSubmitNewList, onDeleteShoppingList}) {
 
   const [showAddListForm, setAddListForm] = useState(false)
+  const [errors, setErrors] = useState([])
 
   function handleShowForm(e) {
     setAddListForm(!showAddListForm)
   }
 
-  function handleDelete(e) {
+  function handleDeleteList(e) {
     // delete request & update state from App of user to delete the Shopping List
+    const shoppingListId = e.target.id
+    fetch(`/shopping_lists/${shoppingListId}`, {
+      method: "DELETE"
+    })
+    .then(resp => {
+      if(resp.ok) {
+        resp.json().then( deletedList => onDeleteShoppingList(deletedList))
+      } else {
+        resp.json().then( error => setErrors(error.errors))
+      }
+    })
   }
+
   return (
     <div>
         <h2>My Shopping Lists</h2>
@@ -25,7 +38,7 @@ function UserShoppingListsPage({user, onSubmitNewList}) {
                 <div key={shopping_list.id}>
                     <ShoppingListCard shopping_list={shopping_list}/>
                     <NewShoppingListIngredientForm />
-                    <Button onClick={handleDelete}>delete list</Button>
+                    <Button id={shopping_list.id} onClick={handleDeleteList}>delete list</Button>
                 </div>
             )
         })}

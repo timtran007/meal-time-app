@@ -67,6 +67,10 @@ function App() {
     //write function to set new state of the user based on the new shopping list that was added.
   }
 
+  function onDeleteShoppingList(deletedList) {
+    //write function to set new state of the user based on the deleted shopping list
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -90,7 +94,7 @@ function App() {
             {user ? <UserDetailedRecipeCard userRecipes={user.recipes} onSubmitEditRecipe={onSubmitEditRecipe} onAddRecipeIngredient={onAddRecipeIngredient} onEditRecipeIngredient={onEditRecipeIngredient} onDeleteRecipeIngredient={onDeleteRecipeIngredient}/>: "loading"}
           </Route>
           <Route path='/profile/shopping-lists'>
-            {user ? <UserShoppingListsPage user={user} onSubmitNewList={onSubmitNewList}/> : "loading"}
+            {user ? <UserShoppingListsPage user={user} onSubmitNewList={onSubmitNewList} onDeleteShoppingList={onDeleteShoppingList}/> : "loading"}
           </Route>
 
           <Route path='/login'>
