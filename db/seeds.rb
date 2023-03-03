@@ -21,14 +21,14 @@ Step 3: add in neutral oil and wait until it starts to smoke
 Step 4: place ribeye in castiron skillet to develop crust (about 3 minutes)
 Step 5: flip ribeye and develop crust on other side
 Step 6: drop in butter and baste until internal temperature reaches 120
-Step 7: let steak rest for 10 minutes', cook_time_in_minutes: 10, prep_time_in_minutes: 5, user_id: tim.id, likes: 0)
+Step 7: let steak rest for 10 minutes', cook_time_in_minutes: 10, prep_time_in_minutes: 5, user_id: tim.id, likes: 0, image_url:"https://cleanketolifestyle.com/wp-content/uploads/2019/05/Ribeyes-with-Garlic-Rosemary-Butter-2.jpg")
 
 brazilian_lemonade = Recipe.create(title: 'Brazilian Lemonade', instructions: 'Step 1: cut off lime ends
 Step 2: cut into 8 wedges
 Step 3: combine limes into blender with water, condensed milk and sugar, 
 Step 4: pulse 5 to 6 times,
 Step 5: strain out drink and discard pieces in the strainer
-Step 6: pour over ice and serve', cook_time_in_minutes: 2, prep_time_in_minutes: 8, likes: 0, user_id: tim.id)
+Step 6: pour over ice and serve', cook_time_in_minutes: 2, prep_time_in_minutes: 8, likes: 0, user_id: tim.id, image_url: "https://www.allrecipes.com/thmb/d3g3j33G4rVwMQMakFgTdmw32A8=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/14940-900948ffd9aa4fa8a34c5e8f2cc9f6d4.jpg")
 
 pork_dumplings = Recipe.create(title: 'Pork Dumplings', instructions: 'Step 1: shred cabbage into a bowl, salt and let sit.
 Step 2: mix ground pork and combine sauces, oils, and seasoning together
@@ -38,7 +38,7 @@ Step 5: set aside how many you want to make and place extra on baking sheet in t
 Step 6: get pan hot on medium high and add cooking oil brown 30 seconds on each side
 Step 7: get 2/3 cups of water and pour into pan and cover for 6 minutes
 Step 8: remove cover and allow exterior to get crispy by allowing 15-20 seconds on each side when water has evaporated
-Step 9: serve.', cook_time_in_minutes: 10, prep_time_in_minutes: 20, likes: 0, user_id: ted.id)
+Step 9: serve.', cook_time_in_minutes: 10, prep_time_in_minutes: 20, likes: 0, user_id: ted.id, image_url: "https://www.spendwithpennies.com/wp-content/uploads/2020/07/Pork-Dumplings-2-SpendWithPennies-3.jpg")
 
 spaghetti = Recipe.create(title: 'Spaghetti', instructions: 'Step 1: Bring pan of water to a boil, salt and add olive oil and follow pasta instructions
 Step 2: put sauce man on medium high and then add oil
@@ -47,7 +47,7 @@ Step 4: brown ground beef and drain
 Step 5: add ground beef back to sauce pan and add in spaghetti sauce
 Step 6: drain pasta and add pasta to sauce and meat mixture
 Step 7: let simmer for 2-3 minutes on medium low
-Step 8: add parmesan, season to taste and serve', cook_time_in_minutes: 20, prep_time_in_minutes: 5, likes: 0, user_id: ted.id)
+Step 8: add parmesan, season to taste and serve', cook_time_in_minutes: 20, prep_time_in_minutes: 5, likes: 0, user_id: ted.id, image_url: "https://www.thereciperebel.com/wp-content/uploads/2018/11/healthy-one-pot-spaghetti-www.thereciperebel.com-1200-18-of-43.jpg")
 
 fajita_beef_tacos = Recipe.create(title: 'Fajita Beef Tacos', instructions: 'Step 1: finely chop and dice shallots
 Step 2: Slice skirt steak against grain and cube
@@ -57,7 +57,7 @@ Step 5: add in shallots and let toast for 2-3 minutes, making sure it does not b
 Step 6: add in cubed skirt steak and turn heat to medium low cooking until liquid releases and meat is brown
 Step 7: cover pan and let simmer for 15 to 20 minutes or until tender
 Step 8: uncover and turn to medium high making sure liquid is evaporated then squeeze in lemon juice
-Step 9: serve on warmed up flour or corn tortillas', cook_time_in_minutes: 30, prep_time_in_minutes: 20, likes: 0, user_id: vanessa.id)
+Step 9: serve on warmed up flour or corn tortillas', cook_time_in_minutes: 30, prep_time_in_minutes: 20, likes: 0, user_id: vanessa.id, image_url: "https://static.wixstatic.com/media/86be50_40cf250d0d504077a16794b595ccfc08~mv2_d_1481_1396_s_2.jpg/v1/fill/w_464,h_464,usm_1.20_1.00_0.01/file.webp")
 
 monday_night_groceries = ShoppingList.create(name:'Mondays Groceries', user_id: tim.id)
 
