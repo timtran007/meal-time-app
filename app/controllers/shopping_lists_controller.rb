@@ -24,13 +24,13 @@ class ShoppingListsController < ApplicationController
         find_user
         shopping_list = find_user.shopping_lists.find(params[:id])
         shopping_list.destroy
-        render json: shopping_list
+        render json: shopping_list, status: :accepted
     end
 
     private
 
     def shopping_list_params
-        params.permit(:name, :date, :user_id)
+        params.permit(:name)
     end
 
 end

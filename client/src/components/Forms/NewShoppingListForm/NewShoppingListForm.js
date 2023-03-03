@@ -6,30 +6,34 @@ import Button from 'react-bootstrap/Button';
 
 function NewShoppingListForm({onSubmitNewList}) {
 
-    const [formDataName, setFormDataName] = useState('')
+    const [formData, setFormData] = useState({name: ''})
     const [errors, setErrors] = useState([])
 
     function handleChange(e) {
-        setFormDataName(e.target.value)
+        const value = e.target.value
+        setFormData({
+            name: `${value}`
+        })
     }
 
     function handleSubmit(e) {
         e.preventDefault()
+        
         fetch('/shopping_lists', {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(formDataName)
+            body: JSON.stringify(formData)
         })
         .then(resp => {
             if(resp.ok) {
                 resp.json().then(newShoppingList => onSubmitNewList(newShoppingList))
             } else {
-                resp.json().then(error => error.errors)
+                resp.json().then(error => setErrors(error.errors))
             }
         })
-        setFormDataName('')
+        setFormData({name: ''})
     }
 
     const displayError = errors.map( e => {
@@ -52,7 +56,7 @@ function NewShoppingListForm({onSubmitNewList}) {
                     id='name'
                     name='name'
                     onChange={handleChange}
-                    value={formDataName}
+                    value={formData.name}
                 >
                 </Form.Control>
             </Col>
@@ -64,7 +68,9 @@ function NewShoppingListForm({onSubmitNewList}) {
                 </Button>
             </Col>
         </Row>
+        <div>
         {displayError}
+        </div>
     </Form>
   )
 }
