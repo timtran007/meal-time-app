@@ -1,8 +1,7 @@
 class FollowingShipsController < ApplicationController
-
     def create
-        following = FollowingShip.create!(user_1_id: session[:user_id], user_2_id: params[:user_2_id])
-        render json: following
+        following_ship = FollowingShip.create!(user_1_id: session[:user_id], user_2_id: params[:user_2_id])
+        render json: following_ship
     end
 
     def destroy
