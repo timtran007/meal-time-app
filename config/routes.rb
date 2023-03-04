@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :following_ships
+  resources :following_ships, only: [:create, :update, :destroy]
   resources :recipes
   resources :shopping_lists
   resources :recipe_ingredients, only: [:create, :update, :destroy]
