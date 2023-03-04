@@ -6,9 +6,6 @@ import Button from 'react-bootstrap/Button'
 function RecipeCard({recipe, user, following, onFollowUser}) {
     const history = useHistory()
 
-   
-    
-
     const [errors, setErrors] = useState([])
     
     function handleClick(e) {
@@ -94,8 +91,6 @@ function RecipeCard({recipe, user, following, onFollowUser}) {
             <p key={e} style={{color:"red"}}>{e}</p>
         )
     })
-
-
 
   return (
     <div>
