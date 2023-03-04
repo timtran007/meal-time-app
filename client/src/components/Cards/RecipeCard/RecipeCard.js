@@ -6,6 +6,9 @@ import Button from 'react-bootstrap/Button'
 function RecipeCard({recipe, user, following, onFollowUser}) {
     const history = useHistory()
 
+   
+    
+
     const [errors, setErrors] = useState([])
     
     function handleClick(e) {
@@ -35,17 +38,55 @@ function RecipeCard({recipe, user, following, onFollowUser}) {
             }
         })
     }
-
+    // // will need to build a join table between user's like associated with the recipe's likes in terms of vote status
+    // const [voteState, setVoteState] = useState(false)
+    // const [likeState, setLikeState] = useState(false)
+    // const [likeCount, setLikeCount] = useState(recipe.likes)
     // function handleLikeClick(e) {
-    //     //click on it once, we would set the like to add one
-    //     //click on it again, we would make it go down by one
-    //     //the value of the current like
-    //     // did the user vote?
-
-    //     const [voteState, setVoteState] = useState(false)
-    //     const [likeCount, setLikeCount] = useState(recipe.likes)
-        
-
+    //     const recipeId = parseInt(e.target.id)
+    //     if(!voteState && !likeState) {
+    //         fetch(`/recipe-likes/${recipeId}`, {
+    //             method: "PATCH",
+    //             headers: {
+    //                 "Content-Type": "application/json"
+    //             },
+    //             body: JSON.stringify({
+    //                 likes: parseInt(recipe.likes + 1)
+    //             })
+    //         })
+    //         .then(resp =>{
+    //             if(resp.ok) {
+    //                 resp.json().then(updatedData => {
+    //                     onLikeClick(updatedData)
+    //                     setLikeState(true)
+    //                     setVoteState(true)
+    //                 })
+    //             } else {
+    //                 resp.json().then(error => setErrors(error.errors))
+    //             }
+    //         })
+    //     } else if (voteState && likeState) {
+    //         fetch(`/recipe-likes/${recipeId}`, {
+    //             method: "PATCH",
+    //             headers: {
+    //                 "Content-Type": "application/json"
+    //             },
+    //             body: JSON.stringify({
+    //                 likes: parseInt(recipe.likes - 1)
+    //             })
+    //         })
+    //         .then(resp =>{
+    //             if(resp.ok) {
+    //                 resp.json().then(updatedData => {
+    //                     onLikeClick(updatedData)
+    //                     setLikeState(false)
+    //                     setVoteState(false)
+    //                 })
+    //             } else {
+    //                 resp.json().then(error => setErrors(error.errors))
+    //             }
+    //         })
+    //     }
     // }
 
     const displayError = errors.map( e => {
@@ -63,9 +104,9 @@ function RecipeCard({recipe, user, following, onFollowUser}) {
             <Card.Img variant="top" src={recipe.image_url} />
             <Card.Body>
                 {following.map(f => f.id).includes(recipe.user.id) ?  null : <Button id={recipe.user.id} onClick={handleFollowClick}>Follow</Button>}
-                <div>
-            {displayError}
-        </div>
+                <Card.Text>
+                    {displayError}
+                </Card.Text>
             </Card.Body>
             <Card.Body>
               <Card.Text>
@@ -87,7 +128,7 @@ function RecipeCard({recipe, user, following, onFollowUser}) {
                 >
                     More Details
                 </Button>
-                {/* <Button onClick={handleLikeClick}>
+                {/* <Button id={recipe.id} onClick={handleLikeClick}>
                     Likes: {recipe.likes}
                 </Button> */}
             </div>

@@ -39,9 +39,9 @@ function DetailedRecipeCard({recipes}) {
                             )
                         })}
                     </Card.Body>
-                    <Card.Text>
+                    {/* <Card.Text>
                         Likes: {recipe.likes}
-                    </Card.Text>
+                    </Card.Text> */}
             </Card>
         </div>
     )} else{

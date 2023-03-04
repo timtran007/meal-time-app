@@ -19,6 +19,8 @@ Rails.application.routes.draw do
 
   post '/follow-user-recipes/', to: 'recipes#follow_user'
 
+  # # feature will be developed at a later time
+  # patch 'recipe-likes/:id', to: 'recipes#update_likes'
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

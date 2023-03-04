@@ -42,6 +42,14 @@ class RecipesController < ApplicationController
         render json: followship
     end
 
+    # #updates the likes in recipes /recipe/:id to "recipes#update_likes" / will round out later
+    # def update_likes
+    #     find_user
+    #     recipe = Recipe.find(params[:id])
+    #     recipe.update(recipe_params)
+    #     render json: recipe
+    # end
+
     private
 
     def recipe_params
