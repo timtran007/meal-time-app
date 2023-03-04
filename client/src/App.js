@@ -9,6 +9,7 @@ import SignupPage from './pages/SignupPage/SignupPage';
 import UserPage from './pages/UserPage/UserPage';
 import UserRecipesPage from './pages/UserRecipesPage/UserRecipesPage';
 import UserShoppingListsPage from './pages/UserShoppingListsPage/UserShoppingListsPage';
+import RecipeHomePage from './pages/RecipeHomePage/RecipeHomePage'
 
 
 
@@ -79,6 +80,10 @@ function App() {
     //write function to set state of the user with the deleted ingredient filtered out of the their shopping lists
   }
 
+  function onFollowUser(newFollowingShip){
+    debugger
+    // adding user_2
+  }
   return (
     <div className="App">
       <header className="App-header">
@@ -87,7 +92,7 @@ function App() {
         
         <Switch>
           <Route exact path='/'>
-            { user ? <RecipePage recipes={recipes} user={user} following={user.following}/> : "loading"}
+            { user ? <RecipePage recipes={recipes} user={user} following={user.following} onFollowUser={onFollowUser}/> : <RecipeHomePage recipes={recipes}/>}
           </Route>
           <Route path='/recipes/:recipe_id'>
             <DetailedRecipeCard recipes={recipes}/>
