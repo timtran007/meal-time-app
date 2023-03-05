@@ -11,9 +11,6 @@ import UserRecipesPage from './pages/UserRecipesPage/UserRecipesPage';
 import UserShoppingListsPage from './pages/UserShoppingListsPage/UserShoppingListsPage';
 import RecipeHomePage from './pages/RecipeHomePage/RecipeHomePage'
 
-
-
-
 function App() {
 
   //user state
@@ -36,54 +33,107 @@ function App() {
     .then(data => setRecipes(data))
   }, [])
 
+  
   function onDeleteFollowingShip(deletedUser) {
-    //write function to set the state of the deleted followingship
+    
+    const updatedFollowing = user.following
+      .filter(following => following.id !== deletedUser.user_2.id)
+    const updatedUser = {
+      ...user, 
+      following: updatedFollowing
+    }
+
+    setUser(updatedUser)
+  
+  }
+
+  function onFollowUser(newFollowingShip){
+    
+    //take the spread of user.following and attach newFollowingShip.user_2
+    //take the spread of following_ships and add in newFollowingShip
+    const updatedFollowing = [
+      ...user.following,
+      newFollowingShip.user_2
+    ]
+    const updatedFollowingShip = [
+      ...user.following_ships,
+      newFollowingShip
+    ]
+
+    const updatedUser = {
+      ...user,
+      following: updatedFollowing,
+      following_ships: updatedFollowingShip
+    }
+    setUser(updatedUser)
+    
   }
 
   function onSubmitNewRecipe(newRecipe) {
-    //write function to set the new state of user to include this new recipe
+    const updatedRecipes = [
+      ...user.recipes,
+      newRecipe
+    ]
+
+    const updatedUser = {
+      ...user,
+      recipes: updatedRecipes
+    }
+    setUser(updatedUser)
+    
   }
 
   function onDeleteRecipe(deletedRecipe) {
-    //write function to set the new state of user based on the deleted recipe
+    const updatedRecipes = user.recipes.filter(r => r.id !== deletedRecipe.id)
+    const updatedUser = {
+      ...user, 
+      recipes: updatedRecipes
+    }
+    setUser(updatedUser)
   }
 
   function onSubmitEditRecipe(editedRecipe) {
+    debugger
     //write function to set new state of the user based on the edited recipe of the user, user.recipes.find
   }
 
   function onAddRecipeIngredient(newRecipeIngredient) {
+    debugger
     //write function to set new state of the user based on the added recipe's ingredient.. user.recipe.find .ingredients
   }
 
   function onEditRecipeIngredient(editedRecipeIngredient) {
+    debugger
     //write function to set new state of the user based on the edited recipe's ingredient.. user.recipe.find .ingredients
   }
 
   function onDeleteRecipeIngredient(deletedRecipeIngredient) {
+    debugger
     //write function to set new state of the user based on the deleted recipe's ingredient
   }
 
   function onSubmitNewList(newShoppingList) {
+    debugger
     //write function to set new state of the user based on the new shopping list that was added.
   }
 
   function onDeleteShoppingList(deletedList) {
+    debugger
     //write function to set new state of the user based on the deleted shopping list
   }
 
   function onAddNewListIngredient(newIngredient) {
-    //write fuction to set state of the user with a new ingredient added to their shopping lists
+    debugger
+    //write function to set state of the user with a new ingredient added to their shopping lists
   }
 
   function onDeleteListIngredient(deletedIngredient) {
+    debugger
     //write function to set state of the user with the deleted ingredient filtered out of the their shopping lists
   }
 
-  function onFollowUser(newFollowingShip){
-    debugger
-    // adding user_2
-  }
+  
+
   return (
     <div className="App">
       <header className="App-header">
