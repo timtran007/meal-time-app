@@ -10,11 +10,16 @@ function UserRecipesPage({userRecipes, onSubmitNewRecipe, onDeleteRecipe}) {
   function handleShowForm(e) {
     setShowForm(!showForm)
   }
+
+  function onCollapseForm(state) {
+    setShowForm(state)
+  }
+
   return (
     <div>
         <h2>My Recipes</h2>
         <Button onClick={handleShowForm}>Add a New Recipe</Button>
-        {showForm ? <NewRecipeForm onSubmitNewRecipe={onSubmitNewRecipe}/>: null}
+        {showForm ? <NewRecipeForm onSubmitNewRecipe={onSubmitNewRecipe} showFormState={showForm} onCollapseForm={onCollapseForm}/>: null}
         
             {userRecipes ? userRecipes.map(recipe => {
                 return(

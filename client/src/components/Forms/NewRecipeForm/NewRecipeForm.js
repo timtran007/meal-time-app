@@ -4,7 +4,7 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 
-function NewRecipeForm({onSubmitNewRecipe}) {
+function NewRecipeForm({showFormState, onSubmitNewRecipe, onCollapseForm}) {
     const initialForm = {
         title: '',
         image_url: '',
@@ -43,11 +43,8 @@ function NewRecipeForm({onSubmitNewRecipe}) {
                 resp.json().then(error => setErrors(error.errors))
             }
         })
-        //write post request to the endpoint '/recipes'
-
-        //set state of the new recipe within user recipes
-
-        setFormData(initialForm)
+        
+        onCollapseForm(false)
     }
 
   return (
