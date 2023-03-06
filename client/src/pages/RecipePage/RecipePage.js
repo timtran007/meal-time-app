@@ -1,5 +1,7 @@
 import React from 'react'
+import Container from 'react-bootstrap/esm/Container'
 import RecipeCard from '../../../src/components/Cards/RecipeCard/RecipeCard'
+import Stack from 'react-bootstrap/esm/Stack'
 
 function RecipePage({recipes, user, following, onFollowUser}) {
     const flatened = following.flatMap( f => f.recipes)
@@ -12,9 +14,9 @@ function RecipePage({recipes, user, following, onFollowUser}) {
     
     if(user){
         return(
-            <div>
-                <h2>Recipes</h2>
-                <div>
+            <Container>
+                <h2 className="heading">Recipes</h2>
+                <Stack gap={5}>
                     { userRecipes ? shuffledRecipes.map( (recipe) => {
                             return(
                                 <div key={recipe.id}>
@@ -27,8 +29,8 @@ function RecipePage({recipes, user, following, onFollowUser}) {
                                 </div>
                             )
                         }) : "loading"}
-                </div>
-            </div>
+                </Stack>
+            </Container>
         )
     }
 }
