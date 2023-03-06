@@ -1,11 +1,18 @@
 import React from 'react'
 import HomeRecipeCard from '../../../src/components/Cards/HomeRecipeCard/HomeRecipeCard'
+import Stack from 'react-bootstrap/Stack';
+import Container from 'react-bootstrap/esm/Container';
+import Row from 'react-bootstrap/esm/Row';
+import '../../../src/App.css'
+
 
 function RecipeHomePage({recipes}) {
   return (
-    <div>
-        <h2>Recipes</h2>
-        <div>
+    <Container>
+        <Row >
+            <h2 className="heading">Discover Recipes</h2>
+        </Row>
+        <Stack gap={5}>
             {recipes?recipes.map((recipe) => {
                 return(
                     <div key={recipe.id}>
@@ -14,10 +21,9 @@ function RecipeHomePage({recipes}) {
                         />
                     </div>
                 )
-            }):null}
-            
-        </div>
-    </div>
+            }):null}  
+        </Stack>
+    </Container>
   )
 }
 
