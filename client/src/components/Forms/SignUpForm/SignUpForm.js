@@ -4,6 +4,7 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 import { useHistory } from 'react-router-dom';
+import Card from 'react-bootstrap/Card'
 
 function SignUpForm({onSignup}) {
     const history = useHistory()
@@ -55,9 +56,10 @@ function SignUpForm({onSignup}) {
     })
 
   return (
+    <Card className="signUpForm">
     <Form onSubmit={handleSubmit}>
-        <Form.Group as={Row}>
-            <Form.Label htmlFor='name'>
+        <Form.Group as={Row} className="signUpFormField">
+            <Form.Label htmlFor='name' column="lg" lg={5}>
                 Name:
             </Form.Label>
             <Col>
@@ -71,8 +73,8 @@ function SignUpForm({onSignup}) {
                 </Form.Control>
             </Col>
         </Form.Group>
-        <Form.Group as={Row}>
-            <Form.Label htmlFor='email'>
+        <Form.Group as={Row} className="signUpFormField">
+            <Form.Label htmlFor='email' column="lg" lg={5}>
                 Email:
             </Form.Label>
             <Col>
@@ -86,8 +88,8 @@ function SignUpForm({onSignup}) {
                 </Form.Control>
             </Col>
         </Form.Group>
-        <Form.Group as={Row}>
-            <Form.Label htmlFor='password'>
+        <Form.Group as={Row} className="signUpFormField">
+            <Form.Label htmlFor='password' column="lg" lg={5}>
                 Password:
             </Form.Label>
             <Col>
@@ -101,8 +103,8 @@ function SignUpForm({onSignup}) {
                 </Form.Control>
             </Col>
         </Form.Group>
-        <Form.Group as={Row}>
-            <Form.Label htmlFor='password_confirmation'>
+        <Form.Group as={Row} className="signUpFormField">
+            <Form.Label htmlFor='password_confirmation' column="lg" lg={5}>
                 Password Confirmation:
             </Form.Label>
             <Col>
@@ -119,6 +121,9 @@ function SignUpForm({onSignup}) {
         <div>
             <Button
                 type='submit'
+                className="loginButton"
+                variant="secondary"
+                size="lg"
             >
                 Sign up
             </Button>
@@ -127,6 +132,7 @@ function SignUpForm({onSignup}) {
             {displayError}
         </div>
     </Form>
+    </Card>
   )
 }
 

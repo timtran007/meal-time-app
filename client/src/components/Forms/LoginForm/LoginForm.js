@@ -4,6 +4,9 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 import { useHistory } from 'react-router-dom';
+import Card from 'react-bootstrap/Card'
+import Stack from 'react-bootstrap/Stack';
+import '../../../App.css'
 
 function LoginForm({onLogin}) {
     const history = useHistory()
@@ -52,40 +55,52 @@ function LoginForm({onLogin}) {
         )
     })
   return (
+    <Card className="loginForm"> 
     <Form onSubmit={handleSubmit}>
-        <Form.Group as={Row}>
-            <Form.Label htmlFor='email'>
+        <Form.Group as={Row} className="formField">
+            <Col>
+            <Form.Label htmlFor='email' className='formLabel'>
                 Email
             </Form.Label>
+            </Col>
             <Col>
                 <Form.Control
                     id='email'
+                    className="formInputt"
                     name='email'
                     type='input'
                     onChange={handleChange}
                     value={formData.email}
+                    size="lg"
                 >
                 </Form.Control>
             </Col>
         </Form.Group>
-        <Form.Group as={Row}>
-            <Form.Label htmlFor='password'>
+        <Form.Group as={Row} className="formField">
+            <Col>
+            <Form.Label htmlFor='password' className='formLabel'>
                 Password
             </Form.Label>
+            </Col>
             <Col>
                 <Form.Control
                     id='password'
+                    className="formInputt"
                     name='password'
                     type='password'
                     onChange={handleChange}
                     value={formData.password}
+                    size="lg"
                 >
                 </Form.Control>
             </Col>
         </Form.Group>
-        <div>
+        <div className='loginButton'>
             <Button
                 type='submit'
+                className="loginButton" 
+                variant="secondary"
+                size="lg"
             >
                 Login
             </Button>
@@ -94,6 +109,7 @@ function LoginForm({onLogin}) {
             {displayError}
         </div>
     </Form>
+    </Card>
   )
 }
 
