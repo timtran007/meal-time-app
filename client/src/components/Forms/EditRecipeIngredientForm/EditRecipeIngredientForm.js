@@ -3,6 +3,7 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
+import Stack from 'react-bootstrap/esm/Stack';
 
 
 function EditRecipeIngredientForm({recipe, ingredientId, onEditRecipeIngredient, onEditIngredientState}) {
@@ -61,7 +62,7 @@ function EditRecipeIngredientForm({recipe, ingredientId, onEditRecipeIngredient,
 
   return (
     <Form onSubmit={handleSubmit}>
-        <Form.Group as={Row}>
+        <Form.Group as={Row} className="mb-3">
             <Col>
                 <Form.Control
                     name='name'
@@ -90,7 +91,7 @@ function EditRecipeIngredientForm({recipe, ingredientId, onEditRecipeIngredient,
                 </Form.Select>
             </Col>
         </Form.Group>
-        <Form.Group as={Row}>
+        <Form.Group as={Row} className="mb-3">
             <Col>
                 <Form.Control
                     name='quantity'
@@ -116,13 +117,15 @@ function EditRecipeIngredientForm({recipe, ingredientId, onEditRecipeIngredient,
                 </Form.Select>
             </Col>
         </Form.Group>
-        <div>
+        <Row className="mb-3">
+            <Col>
             <Button
                 type="submit"
             >
                 Save Changes
             </Button>
-        </div>
+            </Col>
+        </Row>
         <div>
             {displayError}
         </div>

@@ -3,6 +3,8 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
+import '../../../App.css'
+
 
 function EditRecipeForm({recipe, onSubmitEditRecipe, onCollapseRecipeForm}) {
     const initialForm = {
@@ -56,7 +58,7 @@ function EditRecipeForm({recipe, onSubmitEditRecipe, onCollapseRecipeForm}) {
 
   return (
     <Form onSubmit={handleSubmit}>
-        <Form.Control as={Row}>
+        <Form.Group as={Row} className="formGroup">
             <Form.Label
                 htmlFor='title'
             >
@@ -72,8 +74,8 @@ function EditRecipeForm({recipe, onSubmitEditRecipe, onCollapseRecipeForm}) {
                 >
                 </Form.Control>
             </Col>
-        </Form.Control>
-        <Form.Control as={Row}>
+        </Form.Group>
+        <Form.Group as={Row} className="formGroup">
             <Form.Label
                 htmlFor='image_url'
             >
@@ -89,8 +91,8 @@ function EditRecipeForm({recipe, onSubmitEditRecipe, onCollapseRecipeForm}) {
                 >
                 </Form.Control>
             </Col>
-        </Form.Control>
-        <Form.Control as={Row}>
+        </Form.Group>
+        <Form.Group as={Row} className="formGroup" >
             <Form.Label
                 htmlFor='instructions'
             >
@@ -106,8 +108,8 @@ function EditRecipeForm({recipe, onSubmitEditRecipe, onCollapseRecipeForm}) {
                 >
                 </Form.Control>
             </Col>
-        </Form.Control>
-        <Form.Control as={Row}>
+        </Form.Group>
+        <Form.Group as={Row} className="formGroup" >
             <Form.Label
                 htmlFor='cook_time_in_minutes'
             >
@@ -123,8 +125,8 @@ function EditRecipeForm({recipe, onSubmitEditRecipe, onCollapseRecipeForm}) {
                 >
                 </Form.Control>
             </Col>
-        </Form.Control>
-        <Form.Control as={Row}>
+        </Form.Group>
+        <Form.Group as={Row} className="formGroup" >
             <Form.Label
                 htmlFor='prep_time_in_minutes'
             >
@@ -140,7 +142,7 @@ function EditRecipeForm({recipe, onSubmitEditRecipe, onCollapseRecipeForm}) {
                 >
                 </Form.Control>
             </Col>
-        </Form.Control>
+        </Form.Group>
         <div>
             <Button
                 type='submit'

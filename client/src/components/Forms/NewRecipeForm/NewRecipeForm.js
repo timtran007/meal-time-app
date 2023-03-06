@@ -3,6 +3,7 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
+import Stack from 'react-bootstrap/esm/Stack';
 
 function NewRecipeForm({onSubmitNewRecipe, onCollapseForm}) {
     const initialForm = {
@@ -47,17 +48,28 @@ function NewRecipeForm({onSubmitNewRecipe, onCollapseForm}) {
         onCollapseForm(false)
     }
 
+    const displayError = errors.map( e => {
+        return(
+            <p key={e} style={{color:"red"}}>{e}</p>
+        )
+    })
+
   return (
     <Form onSubmit={handleSubmit}>
-        <Form.Control as={Row}>
-            <Form.Label
-                htmlFor='title'
-            >
-                Recipe Title:
-            </Form.Label>
+        <Stack gap={3}>
+        <Form.Group as={Row} className="mb-3">
+            <Col>
+                <Form.Label
+                    htmlFor='title'
+                    className='formLabel'
+                >
+                    Recipe Title:
+                </Form.Label>
+            </Col>
             <Col>
                 <Form.Control
                     id='title'
+                    className='formInputt'
                     name='title'
                     type='input'
                     onChange={handleChange}
@@ -65,16 +77,20 @@ function NewRecipeForm({onSubmitNewRecipe, onCollapseForm}) {
                 >
                 </Form.Control>
             </Col>
-        </Form.Control>
-        <Form.Control as={Row}>
+        </Form.Group>
+        <Form.Group as={Row} className="mb-3">
+            <Col>
             <Form.Label
                 htmlFor='image_url'
+                className='formLabel'
             >
                 Recipe Image URL:
             </Form.Label>
+            </Col>
             <Col>
                 <Form.Control
                     id='image_url'
+                    className='formInputt'
                     name='image_url'
                     type='input'
                     onChange={handleChange}
@@ -82,16 +98,20 @@ function NewRecipeForm({onSubmitNewRecipe, onCollapseForm}) {
                 >
                 </Form.Control>
             </Col>
-        </Form.Control>
-        <Form.Control as={Row}>
+        </Form.Group>
+        <Form.Group as={Row} className="mb-3">
+            <Col>
             <Form.Label
                 htmlFor='instructions'
+                className='formLabel'
             >
                 Recipe Instructions:
             </Form.Label>
+            </Col>
             <Col>
                 <Form.Control
                     id='instructions'
+                    className='formInputt'
                     name='instructions'
                     type='textarea'
                     onChange={handleChange}
@@ -99,16 +119,20 @@ function NewRecipeForm({onSubmitNewRecipe, onCollapseForm}) {
                 >
                 </Form.Control>
             </Col>
-        </Form.Control>
-        <Form.Control as={Row}>
+        </Form.Group>
+        <Form.Group as={Row} className="mb-3">
+            <Col>
             <Form.Label
                 htmlFor='cook_time_in_minutes'
+                className='formLabel'
             >
                 Cook Time In Minutes:
             </Form.Label>
+            </Col>
             <Col>
                 <Form.Control
                     id='cook_time_in_minutes'
+                    className='formInputt'
                     name='cook_time_in_minutes'
                     type='number'
                     onChange={handleChange}
@@ -116,16 +140,20 @@ function NewRecipeForm({onSubmitNewRecipe, onCollapseForm}) {
                 >
                 </Form.Control>
             </Col>
-        </Form.Control>
-        <Form.Control as={Row}>
+        </Form.Group>
+        <Form.Group as={Row} className="mb-3">
+            <Col>
             <Form.Label
                 htmlFor='prep_time_in_minutes'
+                className='formLabel'
             >
                 Prep Time In Minutes:
             </Form.Label>
+            </Col>
             <Col>
                 <Form.Control
                     id='prep_time_in_minutes'
+                    className='formInputt'
                     name='prep_time_in_minutes'
                     type='number'
                     onChange={handleChange}
@@ -133,14 +161,16 @@ function NewRecipeForm({onSubmitNewRecipe, onCollapseForm}) {
                 >
                 </Form.Control>
             </Col>
-        </Form.Control>
-        <div>
+        </Form.Group>
+        <Row className="formSubmission">
             <Button
                 type='submit'
             >
                 Add Recipe
             </Button>
-        </div>
+        </Row>
+        {displayError}
+        </Stack>
     </Form>
   )
 }
