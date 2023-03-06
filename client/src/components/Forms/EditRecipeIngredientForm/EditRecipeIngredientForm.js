@@ -5,7 +5,7 @@ import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 
 
-function EditRecipeIngredientForm({recipe, ingredientId, onEditRecipeIngredient}) {
+function EditRecipeIngredientForm({recipe, ingredientId, onEditRecipeIngredient, onEditIngredientState}) {
     const ingredient = recipe.recipe_ingredients.find( i => i.id === ingredientId)
     
     const initialForm = {
@@ -50,6 +50,7 @@ function EditRecipeIngredientForm({recipe, ingredientId, onEditRecipeIngredient}
                 resp.json().then(error => setErrors(error.errors))
             }
         })
+        onEditIngredientState(false)
     }
 
     const displayError = errors.map( e => {

@@ -143,8 +143,36 @@ function App() {
   }
 
   function onEditRecipeIngredient(editedRecipeIngredient) {
-    debugger
-    //write function to set new state of the user based on the edited recipe's ingredient.. user.recipe.find .ingredients
+    const targetRecipe = user.recipes.find(r => r.id === editedRecipeIngredient.recipe.id)
+    
+    const updatedIngredients = targetRecipe.recipe_ingredients.map(i => {
+      if(i.id === editedRecipeIngredient.id){
+        return(
+          editedRecipeIngredient
+        )
+      } else{
+        return(i)
+      }
+    })
+
+    const updatedRecipes = user.recipes.map(r => {
+      if(r.id === targetRecipe.id) {
+        return({
+          ...targetRecipe,
+          recipe_ingredients: updatedIngredients
+        })
+      } else{
+        return(r)
+      }
+    })
+
+    const updatedUser = {
+      ...user, 
+      recipes: updatedRecipes
+    }
+    
+    setUser(updatedUser)
+    
   }
 
   function onDeleteRecipeIngredient(deletedRecipeIngredient) {

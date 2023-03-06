@@ -57,6 +57,14 @@ function UserDetailedRecipeCard({userRecipes, onSubmitEditRecipe, onAddRecipeIng
         setShowEditForm(newState)
     }
 
+    function onAddIngredientState(newState) {
+        setShowIngredientForm(newState)
+    }
+
+    function onEditIngredientState(newState) {
+        setEditIngredientForm(newState)
+    }
+
     const recipe = userRecipes.find(recipe => recipe.id === parseInt(params.recipe_id))
     if(recipe){
     return(
@@ -83,7 +91,7 @@ function UserDetailedRecipeCard({userRecipes, onSubmitEditRecipe, onAddRecipeIng
                                     {ingredient.name} - {ingredient.quantity} {ingredient.measurement}
                                 </Card.Text>
                                 <Button id={ingredient.id} onClick={handleEditIngredient}>edit</Button>
-                                {showEditIngredientForm && targetID === ingredient.id ? <EditRecipeIngredientForm ingredient={ingredient} recipe={recipe} onEditRecipeIngredient={onEditRecipeIngredient} ingredientId={ingredient.id}/> : null}
+                                {showEditIngredientForm && targetID === ingredient.id ? <EditRecipeIngredientForm ingredient={ingredient} recipe={recipe} onEditRecipeIngredient={onEditRecipeIngredient} ingredientId={ingredient.id} onEditIngredientState={onEditIngredientState}/> : null}
                                 <Button id={ingredient.id} onClick={handleDeleteIngredient}>delete</Button>
                                 </Card.Body>
                             )
@@ -94,7 +102,7 @@ function UserDetailedRecipeCard({userRecipes, onSubmitEditRecipe, onAddRecipeIng
                     </Card.Text> */}
                     <Button onClick={handleClickAddIngredients}>add ingredients</Button>
                         <div>
-                            { showIngredientForm ? <NewRecipeIngredientForm recipe={recipe} onAddRecipeIngredient={onAddRecipeIngredient}/> : null}
+                            { showIngredientForm ? <NewRecipeIngredientForm recipe={recipe} onAddRecipeIngredient={onAddRecipeIngredient} onAddIngredientState={onAddIngredientState}/> : null}
                         </div>
                     <Button onClick={handleShowEditRecipeForm}>edit</Button>
                         {showEditForm ? <EditRecipeForm onSubmitEditRecipe={onSubmitEditRecipe} recipe={recipe} onCollapseRecipeForm={onCollapseRecipeForm}/> : null}
