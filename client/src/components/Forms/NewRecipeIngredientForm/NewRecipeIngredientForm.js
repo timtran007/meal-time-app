@@ -4,7 +4,7 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 
-function NewRecipeIngredientForm({recipe, onAddRecipeIngredient}) {
+function NewRecipeIngredientForm({recipe, onAddRecipeIngredient, onAddIngredientState}) {
     const initialForm = {
         name: '',
         category: 'Select a category...',
@@ -44,6 +44,7 @@ function NewRecipeIngredientForm({recipe, onAddRecipeIngredient}) {
         })
 
         setFormData(initialForm)
+        onAddIngredientState(false)
     }
 
     const displayError = errors.map( e => {
