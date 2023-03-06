@@ -4,7 +4,7 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 
-function NewShoppingListForm({onSubmitNewList}) {
+function NewShoppingListForm({onSubmitNewList, onAddListState}) {
 
     const [formData, setFormData] = useState({name: ''})
     const [errors, setErrors] = useState([])
@@ -34,6 +34,7 @@ function NewShoppingListForm({onSubmitNewList}) {
             }
         })
         setFormData({name: ''})
+        onAddListState(false)
     }
 
     const displayError = errors.map( e => {
@@ -64,7 +65,7 @@ function NewShoppingListForm({onSubmitNewList}) {
                 <Button
                     type='submit'
                 >
-                    Add List
+                    Add New List
                 </Button>
             </Col>
         </Row>

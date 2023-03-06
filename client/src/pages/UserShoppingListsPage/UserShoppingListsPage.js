@@ -27,6 +27,10 @@ function UserShoppingListsPage({user, onSubmitNewList, onDeleteShoppingList, onA
       }
     })
   }
+
+  function onAddListState(newState) {
+    setAddListForm(newState)
+  }
   
   const displayError = errors.map( e => {
     return(
@@ -39,7 +43,7 @@ function UserShoppingListsPage({user, onSubmitNewList, onDeleteShoppingList, onA
         <h2>My Shopping Lists</h2>
         <Button onClick={handleShowForm}>Add a Shopping List</Button>
         <div>{displayError}</div>
-        {showAddListForm ? <NewShoppingListForm user={user} onSubmitNewList={onSubmitNewList}/> : null}
+        {showAddListForm ? <NewShoppingListForm user={user} onSubmitNewList={onSubmitNewList} onAddListState={onAddListState}/> : null}
         {user.shopping_lists.map(shopping_list => {
             return(
                 <div key={shopping_list.id}>
