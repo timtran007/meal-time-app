@@ -8,12 +8,14 @@ function RecipePage({recipes, user, following, onFollowUser}) {
     const key = 'id'
     const uniqueRecipes = [...new Map(userRecipes.map(recipe => [recipe[key], recipe])).values()]
     
+    const shuffledRecipes = uniqueRecipes.sort(() => Math.random() - 0.5)
+    
     if(user){
         return(
             <div>
                 <h2>Recipes</h2>
                 <div>
-                    { userRecipes ? uniqueRecipes.map( (recipe) => {
+                    { userRecipes ? shuffledRecipes.map( (recipe) => {
                             return(
                                 <div key={recipe.id}>
                                     <RecipeCard 
