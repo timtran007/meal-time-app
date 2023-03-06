@@ -111,12 +111,35 @@ function App() {
     }
 
     setUser(updatedUser)
-    
+
   }
 
   function onAddRecipeIngredient(newRecipeIngredient) {
-    debugger
-    //write function to set new state of the user based on the added recipe's ingredient.. user.recipe.find .ingredients
+  
+    const targetRecipe = user.recipes.find(r => r.id === newRecipeIngredient.recipe.id)
+
+    const updatedTargetRecipe = {
+      ...targetRecipe,
+      recipe_ingredients: [
+        ...targetRecipe.recipe_ingredients,
+        newRecipeIngredient]
+    }
+
+    const updatedRecipes = user.recipes.map( r => {
+      if(r.id === newRecipeIngredient.recipe.id) {
+        return (updatedTargetRecipe)
+      } else {
+        return(r)
+      }
+    })
+
+    const updatedUser = {
+      ...user, 
+      recipes: updatedRecipes
+    }
+
+    setUser(updatedUser)
+
   }
 
   function onEditRecipeIngredient(editedRecipeIngredient) {
@@ -125,8 +148,28 @@ function App() {
   }
 
   function onDeleteRecipeIngredient(deletedRecipeIngredient) {
-    debugger
-    //write function to set new state of the user based on the deleted recipe's ingredient
+    const targetRecipe = user.recipes.find(r => r.id === deletedRecipeIngredient.recipe.id)
+    
+    const updatedTargetRecipeIngredients = targetRecipe.recipe_ingredients.filter(ingredient => ingredient.id !== deletedRecipeIngredient.id)
+
+    const updatedRecipes = user.recipes.map(r => {
+      if(r.id === deletedRecipeIngredient.recipe.id){
+        return({
+          ...targetRecipe,
+          recipe_ingredients: updatedTargetRecipeIngredients
+        })
+      } else{
+        return(
+          r
+        )
+      }
+    })
+
+    const updatedUser = {
+      ...user,
+      recipes: updatedRecipes
+    }
+    setUser(updatedUser)
   }
 
   function onSubmitNewList(newShoppingList) {
