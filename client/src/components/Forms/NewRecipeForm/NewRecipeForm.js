@@ -4,7 +4,7 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 
-function NewRecipeForm({showFormState, onSubmitNewRecipe, onCollapseForm}) {
+function NewRecipeForm({onSubmitNewRecipe, onCollapseForm}) {
     const initialForm = {
         title: '',
         image_url: '',
@@ -43,7 +43,7 @@ function NewRecipeForm({showFormState, onSubmitNewRecipe, onCollapseForm}) {
                 resp.json().then(error => setErrors(error.errors))
             }
         })
-        
+        setFormData(initialForm)
         onCollapseForm(false)
     }
 
