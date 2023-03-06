@@ -1,10 +1,11 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import NewShoppingListForm from '../NewShoppingListForm'
 
+const functionProp = jest.fn()
 describe('render new shopping list form', () => {
 
     it('renders name input', () => {
-        render(<NewShoppingListForm />);
+        render(<NewShoppingListForm onSubmitNewList={functionProp} onAddListState={functionProp}/>);
         const nameInput = screen.getByLabelText(/name/i)
         expect(nameInput).toBeInTheDocument()
     })
@@ -13,7 +14,7 @@ describe('render new shopping list form', () => {
 
 describe('new shopping lists form functionality', () => {
     it('should be able to type into name input', () => {
-        render(<NewShoppingListForm />);
+        render(<NewShoppingListForm onSubmitNewList={functionProp} onAddListState={functionProp}/>);
         const nameInput = screen.getByLabelText(/name/i)
         fireEvent.change(nameInput, { target: { value: "Monday's Grocery List"} })
         expect(nameInput.value).toBe("Monday's Grocery List")
@@ -22,9 +23,9 @@ describe('new shopping lists form functionality', () => {
     //clears out the the input fields once button is clicked
 
     it('should clear name input after button click', () => {
-        render(<NewShoppingListForm />);
+        render(<NewShoppingListForm onSubmitNewList={functionProp} onAddListState={functionProp}/>);
         const nameInput = screen.getByLabelText(/name/i)
-        const button = screen.getByRole( 'button', { name: /add list/i})
+        const button = screen.getByRole( 'button', { name: /add new list/i})
         fireEvent.change(nameInput, { target: { value: "Monday's Grocery List"} })
         fireEvent.click(button)
         expect(nameInput.value).toBe("")
