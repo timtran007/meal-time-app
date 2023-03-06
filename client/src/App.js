@@ -93,8 +93,25 @@ function App() {
   }
 
   function onSubmitEditRecipe(editedRecipe) {
-    debugger
-    //write function to set new state of the user based on the edited recipe of the user, user.recipes.find
+    const updatedRecipes = user.recipes.map(r => {
+      if(r.id === editedRecipe.id){
+        return(
+          editedRecipe
+        )
+      } else{
+        return(
+          r
+        )
+      }
+    }) 
+    
+    const updatedUser = {
+      ...user,
+      recipes: updatedRecipes
+    }
+
+    setUser(updatedUser)
+    
   }
 
   function onAddRecipeIngredient(newRecipeIngredient) {

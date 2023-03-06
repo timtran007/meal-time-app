@@ -53,6 +53,10 @@ function UserDetailedRecipeCard({userRecipes, onSubmitEditRecipe, onAddRecipeIng
 
     }
 
+    function onCollapseRecipeForm(newState) {
+        setShowEditForm(newState)
+    }
+
     const recipe = userRecipes.find(recipe => recipe.id === parseInt(params.recipe_id))
     if(recipe){
     return(
@@ -85,15 +89,15 @@ function UserDetailedRecipeCard({userRecipes, onSubmitEditRecipe, onAddRecipeIng
                             )
                         })}
                     </Card.Body>
-                    <Card.Text>
+                    {/* <Card.Text>
                         Likes: {recipe.likes}
-                    </Card.Text>
+                    </Card.Text> */}
                     <Button onClick={handleClickAddIngredients}>add ingredients</Button>
                         <div>
                             { showIngredientForm ? <NewRecipeIngredientForm recipe={recipe} onAddRecipeIngredient={onAddRecipeIngredient}/> : null}
                         </div>
                     <Button onClick={handleShowEditRecipeForm}>edit</Button>
-                        {showEditForm ? <EditRecipeForm onSubmitEditRecipe={onSubmitEditRecipe} recipe={recipe}/> : null}
+                        {showEditForm ? <EditRecipeForm onSubmitEditRecipe={onSubmitEditRecipe} recipe={recipe} onCollapseRecipeForm={onCollapseRecipeForm}/> : null}
             </Card>
         </div>
     )} else{

@@ -4,7 +4,7 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 
-function EditRecipeForm({recipe, onSubmitEditRecipe}) {
+function EditRecipeForm({recipe, onSubmitEditRecipe, onCollapseRecipeForm}) {
     const initialForm = {
         title: recipe.title,
         image_url: recipe.image_url,
@@ -45,6 +45,7 @@ function EditRecipeForm({recipe, onSubmitEditRecipe}) {
         })
 
         setFormData(initialForm)
+        onCollapseRecipeForm(false)
     }
 
     const displayError = errors.map( e => {
@@ -144,7 +145,7 @@ function EditRecipeForm({recipe, onSubmitEditRecipe}) {
             <Button
                 type='submit'
             >
-                Edit
+                Save Changes
             </Button>
         </div>
         <div>
