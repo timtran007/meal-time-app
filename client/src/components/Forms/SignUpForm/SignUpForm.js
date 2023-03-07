@@ -59,7 +59,7 @@ function SignUpForm({onSignup}) {
     <Card className="signUpForm">
     <Form onSubmit={handleSubmit}>
         <Form.Group as={Row} className="signUpFormField">
-            <Form.Label htmlFor='name' column="lg" lg={5}>
+            <Form.Label htmlFor='name' column="lg" xs={4} className="formLabel">
                 Name:
             </Form.Label>
             <Col>
@@ -74,7 +74,7 @@ function SignUpForm({onSignup}) {
             </Col>
         </Form.Group>
         <Form.Group as={Row} className="signUpFormField">
-            <Form.Label htmlFor='email' column="lg" lg={5}>
+            <Form.Label htmlFor='email' column="lg" xs={4} className="formLabel">
                 Email:
             </Form.Label>
             <Col>
@@ -89,7 +89,7 @@ function SignUpForm({onSignup}) {
             </Col>
         </Form.Group>
         <Form.Group as={Row} className="signUpFormField">
-            <Form.Label htmlFor='password' column="lg" lg={5}>
+            <Form.Label htmlFor='password' column="lg" xs={4} className="formLabel">
                 Password:
             </Form.Label>
             <Col>
@@ -104,7 +104,7 @@ function SignUpForm({onSignup}) {
             </Col>
         </Form.Group>
         <Form.Group as={Row} className="signUpFormField">
-            <Form.Label htmlFor='password_confirmation' column="lg" lg={5}>
+            <Form.Label htmlFor='password_confirmation' column="lg" xs={4} className="formLabel">
                 Password Confirmation:
             </Form.Label>
             <Col>

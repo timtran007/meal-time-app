@@ -56,9 +56,9 @@ function LoginForm({onLogin}) {
     })
   return (
     <Card className="loginForm"> 
-    <Form onSubmit={handleSubmit}>
-        <Form.Group as={Row} className="formField">
-            <Col>
+    <Form onSubmit={handleSubmit} className="form">
+        <Form.Group as={Row} className="signUpFormField">
+            <Col xs={3}>
             <Form.Label htmlFor='email' className='formLabel'>
                 Email
             </Form.Label>
@@ -71,13 +71,12 @@ function LoginForm({onLogin}) {
                     type='input'
                     onChange={handleChange}
                     value={formData.email}
-                    size="lg"
                 >
                 </Form.Control>
             </Col>
         </Form.Group>
-        <Form.Group as={Row} className="formField">
-            <Col>
+        <Form.Group as={Row} className="signUpFormField">
+            <Col xs={3}>
             <Form.Label htmlFor='password' className='formLabel'>
                 Password
             </Form.Label>
@@ -90,7 +89,6 @@ function LoginForm({onLogin}) {
                     type='password'
                     onChange={handleChange}
                     value={formData.password}
-                    size="lg"
                 >
                 </Form.Control>
             </Col>
