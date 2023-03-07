@@ -2,6 +2,7 @@ import React from 'react'
 import { useHistory } from 'react-router-dom'
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
+import Stack from 'react-bootstrap/Stack'
 
 function HomeRecipeCard({recipe}) {
     const history = useHistory()
@@ -13,9 +14,11 @@ function HomeRecipeCard({recipe}) {
 
   return (
     <div>
-        <Card>
+        <Card className="generalCard">
+            <Stack gap={4}>
             <Card.Title>Recipe: {recipe.title}</Card.Title>
             <Card.Img variant="top" src={recipe.image_url} />
+            </Stack>
             <Card.Body>
             </Card.Body>
             <Card.Body>
