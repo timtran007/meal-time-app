@@ -1,7 +1,8 @@
 import React, {useState} from 'react'
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
-import UserCard from '../UserCard/UserCard'
+import Stack from 'react-bootstrap/Stack'
+import Image from 'react-bootstrap/Image'
 
 function FollowingCard({following, user, onDeleteFollowingShip}) {
   const [errors, setErrors] = useState([])
@@ -21,19 +22,25 @@ function FollowingCard({following, user, onDeleteFollowingShip}) {
       }
     })
   }
-   
-  const followingShip = user.following_ships.find(fs => fs.user_2_id === following.id)
 
   return (
-    <Card>
+    <Card className='profileCard'>
           <Card.Body>
+            <Stack direction='horizontal' gap={5}>
+            <Image 
+              roundedCircle='true' 
+              src={following.image_url} 
+              className='profileImage'
+            />
             <Card.Title>{following.name}</Card.Title>
-            <Card.Img variant="top" src={following.image_url} />
             <Button 
+              size='sm'
+              variant='outline-primary'
               id={following.id}
               onClick={handleUnfollow}>
                 unfollow
             </Button>
+            </Stack>
           </Card.Body>
     </Card>
   )

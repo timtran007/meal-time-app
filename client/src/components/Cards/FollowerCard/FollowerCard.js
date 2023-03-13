@@ -1,14 +1,21 @@
 import React from 'react'
 import Card from 'react-bootstrap/Card'
-import Button from 'react-bootstrap/Button'
+import Image from 'react-bootstrap/Image'
+import Stack from 'react-bootstrap/Stack'
 
 function FollowerCard({follower}) {
   return (
-    <Card>
-          <Card.Body>
-            <Card.Title>{follower.name}</Card.Title>
-            <Card.Img variant="top" src={follower.image_url} />
-          </Card.Body>
+    <Card className='profileCard'>
+      <Card.Body>
+        <Stack direction='horizontal' gap={5}>
+        <Image 
+          roundedCircle='true' 
+          src={follower.image_url} 
+          className='profileImage'
+        />
+        <Card.Title>{follower.name}</Card.Title>
+        </Stack>
+      </Card.Body>
     </Card>
   )
 }
