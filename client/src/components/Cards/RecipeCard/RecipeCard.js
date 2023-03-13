@@ -4,6 +4,7 @@ import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 import Stack from 'react-bootstrap/esm/Stack'
 import Col from 'react-bootstrap/Col'
+import Image from 'react-bootstrap/Image'
 
 function RecipeCard({recipe, user, following, onFollowUser}) {
     const history = useHistory()
@@ -98,6 +99,29 @@ function RecipeCard({recipe, user, following, onFollowUser}) {
     <div>
         <Card className='recipeCard'>
             <Stack gap={4}>
+            <Card.Body>
+                    {user ? 
+                    <Card.Body>
+                        <Stack direction='horizontal' gap={5}>
+                            <Image 
+                                src={recipe.user.image_url}
+                                roundedCircle='true'
+                                className="profileImage" 
+                            /> 
+                            <Card.Text>{recipe.user.name}</Card.Text>
+                        </Stack>
+                    </Card.Body> : 
+                    <Card.Body>
+                        <Stack direction='horizontal' gap={5}>
+                            <Image 
+                                src={user.image_url}
+                                roundedCircle='true'
+                                className="profileImage"
+                            /> 
+                            <Card.Text>{user.name}</Card.Text>
+                        </Stack>
+                    </Card.Body>}
+                </Card.Body>
             <Card.Title>Recipe: {recipe.title}</Card.Title>
             <Card.Img variant="top" src={recipe.image_url} />
             </Stack>
@@ -120,25 +144,6 @@ function RecipeCard({recipe, user, following, onFollowUser}) {
               <Card.Text>
                     Cook Time: {recipe.cook_time_in_minutes} | Prep Time: {recipe.prep_time_in_minutes}
                 </Card.Text>
-                <Card.Body>
-                    {user ? 
-                    <Card.Body>
-                        <Col>
-                            <Card.Img src={recipe.user.image_url} className="profileImage"></Card.Img> 
-                        </Col>
-                        <Col>
-                            <Card.Text>{recipe.user.name}</Card.Text>
-                        </Col>
-                    </Card.Body> : 
-                    <Card.Body>
-                        <Col>
-                            <Card.Img src={user.image_url} className="profileImage"></Card.Img> 
-                        </Col>
-                        <Col>
-                            <Card.Text>{user.name}</Card.Text>
-                        </Col>
-                    </Card.Body>}
-                </Card.Body>
             </Card.Body>
             <div>
                 <Button 

@@ -41,19 +41,17 @@ function DetailedRecipeCard({recipes}) {
                     </Card.Text>
                 </Card.Body>
                 <Card.Body>
-                    <Row>
-                        <Col>
+                    <Stack>
                         by:
-                        </Col>
-                        <Col>
-                            <Image src={recipe.user.image_url} roundedCircle='true'/>
-                        </Col>
-                        <Col>
-                            <Card.Text>
-                                {recipe.user.name}
-                            </Card.Text>
-                        </Col>
-                    </Row>
+                        <Image 
+                            src={recipe.user.image_url} 
+                            roundedCircle='true'
+                            className='profileImage'
+                        />
+                        <Card.Text>
+                            {recipe.user.name}
+                        </Card.Text>
+                    </Stack>
                     
                 </Card.Body>
                     {/* <Card.Text>
