@@ -71,7 +71,7 @@ function UserDetailedRecipeCard({userRecipes, onSubmitEditRecipe, onAddRecipeIng
     if(recipe){
     return(
         <div>
-            <Container>
+            <Container className='containerSpacing'>
                 <Card.Title data-testid="Recipe Title">{recipe.title}</Card.Title>
                 <Card.Img variant="top" src={recipe.image_url} className="recipeImage"/>
                 <Card.Body>
@@ -83,7 +83,8 @@ function UserDetailedRecipeCard({userRecipes, onSubmitEditRecipe, onAddRecipeIng
                     </Card.Text>
                 </Card.Body>
                 <Card.Body className='spacing'>
-                    Ingredients: {recipe.recipe_ingredients.map(ingredient => {
+                    <h5>Ingredients:</h5> 
+                    {recipe.recipe_ingredients.map(ingredient => {
                         return(
                             <Card.Body className='spacing'>
                             <Stack key={ingredient.id} direction='horizontal' gap={5}>
@@ -94,7 +95,7 @@ function UserDetailedRecipeCard({userRecipes, onSubmitEditRecipe, onAddRecipeIng
                                     id={ingredient.id} 
                                     onClick={handleDeleteIngredient}
                                     variant='outline-danger'
-                                    size='small'
+                                    size='sm'
                                 >
                                     delete
                                 </Button>
@@ -102,6 +103,7 @@ function UserDetailedRecipeCard({userRecipes, onSubmitEditRecipe, onAddRecipeIng
                                         id={ingredient.id} 
                                         onClick={handleEditIngredient}
                                         variant='secondary'
+                                        size='sm'
                                     >
                                         edit
                                     </Button>
@@ -122,11 +124,11 @@ function UserDetailedRecipeCard({userRecipes, onSubmitEditRecipe, onAddRecipeIng
                         Likes: {recipe.likes}
                     </Card.Text> */}
                     <Stack gap={3}>
-                        <Button className="updateButton" onClick={handleClickAddIngredients}>add ingredients</Button>
+                        <Button className="updateButton" variant='outline-secondary' onClick={handleClickAddIngredients}>add ingredients</Button>
                             <div>
                                 { showIngredientForm ? <NewRecipeIngredientForm recipe={recipe} onAddRecipeIngredient={onAddRecipeIngredient} onAddIngredientState={onAddIngredientState}/> : null}
                             </div>
-                        <Button className="updateButton" onClick={handleShowEditRecipeForm}>edit</Button>
+                        <Button className="updateButton" variant='secondary' onClick={handleShowEditRecipeForm}>Edit Recipe</Button>
                             {showEditForm ? <EditRecipeForm onSubmitEditRecipe={onSubmitEditRecipe} recipe={recipe} onCollapseRecipeForm={onCollapseRecipeForm}/> : null}
                     </Stack>
             </Container>
