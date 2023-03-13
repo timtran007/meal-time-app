@@ -3,6 +3,7 @@ import Card from 'react-bootstrap/Card'
 import ListGroup from 'react-bootstrap/ListGroup';
 import Badge from 'react-bootstrap/Badge'
 import Button from 'react-bootstrap/Button'
+import Container from 'react-bootstrap/Container'
 import { useState } from 'react';
 
 function ShoppingListCard({shopping_list, onDeleteListIngredient}) {
@@ -29,21 +30,26 @@ function ShoppingListCard({shopping_list, onDeleteListIngredient}) {
       })
     
   return (
-    <Card>
+    <Container className='containerSpacing'> 
         <Card.Title>
             {shopping_list.name}
         </Card.Title>
         {shopping_list.ingredients.map(ingredient => {
             return(
-                <ListGroup key={ingredient.id}>
-                    <ListGroup.Item>
-                        {ingredient.name} | <Badge>{ingredient.category}</Badge> <Button id={ingredient.id} onClick={handleDelete}>delete</Button>
+                <ListGroup 
+                    key={ingredient.id} 
+                    className='list'
+                >
+                    <ListGroup.Item className="ingredientList">
+                        {ingredient.name} | <Badge bg='info'>{ingredient.category}</Badge> 
+                        
+                    <Button variant='outline-danger' className='ingredientListDelete' id={ingredient.id} onClick={handleDelete} size="sm">delete</Button>
                     </ListGroup.Item>
                 </ListGroup>
             )
         })}
         {displayError}
-    </Card>
+    </Container>
   )
 }
 
