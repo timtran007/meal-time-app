@@ -3,6 +3,7 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
+import Stack from 'react-bootstrap/Stack';
 
 function NewShoppingListForm({onSubmitNewList, onAddListState}) {
 
@@ -45,33 +46,31 @@ function NewShoppingListForm({onSubmitNewList, onAddListState}) {
 
   return (
     <Form onSubmit={handleSubmit}>
-        <Row>
+        <Stack direction='horizontal' gap={5} className="singleInput">
             <Form.Label
                 htmlFor='name'
+                className='formLabel'
             >
                 Shopping List's Name: 
             </Form.Label>
-            <Col>
                 <Form.Control
                     type='input'
                     id='name'
                     name='name'
                     onChange={handleChange}
                     value={formData.name}
+                    className="formInputt"
                 >
                 </Form.Control>
-            </Col>
-            <Col>
                 <Button
                     type='submit'
                 >
                     Add New List
                 </Button>
-            </Col>
-        </Row>
-        <div>
+        </Stack>
+        <Row>
         {displayError}
-        </div>
+        </Row>
     </Form>
   )
 }
