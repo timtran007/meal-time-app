@@ -55,7 +55,10 @@ function NewRecipeForm({onSubmitNewRecipe, onCollapseForm}) {
     })
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form 
+        onSubmit={handleSubmit}
+        className='addForm'
+    >
         <Stack gap={3}>
         <Form.Group as={Row} className="mb-3">
             <Col>
@@ -68,12 +71,13 @@ function NewRecipeForm({onSubmitNewRecipe, onCollapseForm}) {
             </Col>
             <Col>
                 <Form.Control
+                    as='input'
                     id='title'
-                    className='formInputt'
                     name='title'
                     type='input'
                     onChange={handleChange}
                     value={formData.title}
+                    className='inputField'
                 >
                 </Form.Control>
             </Col>
@@ -89,12 +93,13 @@ function NewRecipeForm({onSubmitNewRecipe, onCollapseForm}) {
             </Col>
             <Col>
                 <Form.Control
+                    as='input'
                     id='image_url'
-                    className='formInputt'
                     name='image_url'
                     type='input'
                     onChange={handleChange}
                     value={formData.image_url}
+                    className='inputField'
                 >
                 </Form.Control>
             </Col>
@@ -110,12 +115,14 @@ function NewRecipeForm({onSubmitNewRecipe, onCollapseForm}) {
             </Col>
             <Col>
                 <Form.Control
+                    as='textarea'
+                    rows={5}
                     id='instructions'
-                    className='formInputt'
                     name='instructions'
                     type='textarea'
                     onChange={handleChange}
                     value={formData.instructions}
+                    className='inputField'
                 >
                 </Form.Control>
             </Col>
@@ -132,11 +139,11 @@ function NewRecipeForm({onSubmitNewRecipe, onCollapseForm}) {
             <Col>
                 <Form.Control
                     id='cook_time_in_minutes'
-                    className='formInputt'
                     name='cook_time_in_minutes'
                     type='number'
                     onChange={handleChange}
                     value={formData.cook_time_in_minutes}
+                    className='inputField'
                 >
                 </Form.Control>
             </Col>
@@ -153,22 +160,24 @@ function NewRecipeForm({onSubmitNewRecipe, onCollapseForm}) {
             <Col>
                 <Form.Control
                     id='prep_time_in_minutes'
-                    className='formInputt'
                     name='prep_time_in_minutes'
                     type='number'
                     onChange={handleChange}
                     value={formData.prep_time_in_minutes}
+                    className='inputField'
                 >
                 </Form.Control>
             </Col>
         </Form.Group>
-        <Row className="formSubmission">
+        <div>
             <Button
                 type='submit'
+                size='sm'
+                variant='secondary'
             >
-                Add Recipe
+                Add
             </Button>
-        </Row>
+        </div>
         {displayError}
         </Stack>
     </Form>

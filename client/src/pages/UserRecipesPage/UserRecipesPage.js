@@ -18,7 +18,14 @@ function UserRecipesPage({userRecipes, onSubmitNewRecipe, onDeleteRecipe}) {
   return (
     <div>
         <h2>My Recipes</h2>
-        <Button onClick={handleShowForm}>Add a New Recipe</Button>
+        <Button 
+          onClick={handleShowForm}
+          variant='secondary'
+          size='sm'
+          className='spacing'
+        >
+          Add a New Recipe
+        </Button>
         {showForm ? <NewRecipeForm onSubmitNewRecipe={onSubmitNewRecipe} showFormState={showForm} onCollapseForm={onCollapseForm}/>: null}
         
             {userRecipes ? userRecipes.map(recipe => {
