@@ -6,9 +6,9 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-tim = User.create(name: 'Tim', email: 'tim@gmail.com', password: '12345', password_confirmation: '12345')
-ted = User.create(name: 'Ted', email: 'ted@gmail.com', password: '12345', password_confirmation: '12345')
-vanessa = User.create(name: 'Vanessa', email: 'vanessa@gmail.com', password: '12345', password_confirmation: '12345')
+tim = User.create(name: 'Tim', email: 'tim@gmail.com', password: '12345', password_confirmation: '12345', image_url: 'https://ca.slack-edge.com/T02MD9XTF-U03UFUJS7UH-bd877fb5ef68-512')
+ted = User.create(name: 'Ted', email: 'ted@gmail.com', password: '12345', password_confirmation: '12345', image_url: 'https://media.licdn.com/dms/image/C4E03AQG0ZC4hC_j7OA/profile-displayphoto-shrink_400_400/0/1552420451800?e=1683763200&v=beta&t=zxwjtuXMzDKxAzJH50YaMbzfIzX0c3rEUUlyxXCPCpg')
+vanessa = User.create(name: 'Vanessa', email: 'vanessa@gmail.com', password: '12345', password_confirmation: '12345', image_url: 'https://decisivedigitalmarketing.com/wp-content/uploads/bb-plugin/cache/IMG_8514-150x150-circle.jpg')
 noah = User.create(name: 'Noah', email: 'noah@gmail.com', password: '12345', password_confirmation: '12345') 
 
 FollowingShip.create(user_1_id: noah.id, user_2_id: tim.id)
