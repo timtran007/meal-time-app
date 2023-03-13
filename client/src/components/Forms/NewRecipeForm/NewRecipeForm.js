@@ -3,7 +3,7 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
-import Stack from 'react-bootstrap/esm/Stack';
+import Stack from 'react-bootstrap/Stack';
 
 function NewRecipeForm({onSubmitNewRecipe, onCollapseForm}) {
     const initialForm = {
