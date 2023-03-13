@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
+import Stack from 'react-bootstrap/Stack'
 
 
 function UserRecipeCard({recipe, onDeleteRecipe}) {
@@ -31,18 +32,17 @@ function UserRecipeCard({recipe, onDeleteRecipe}) {
     
   return (
     <div>
-        <Card>
+        <Card className='generalCard'>
+            <Stack gap={4}>
             <Card.Title>Recipe: {recipe.title}</Card.Title>
             <Card.Img variant="top" src={recipe.image_url} />
             <Card.Body>
               <Card.Text>
-                    Cook Time: {recipe.cook_time_in_minutes}
-                </Card.Text>
-                <Card.Text>
+                    Cook Time: {recipe.cook_time_in_minutes} | 
                     Prep Time: {recipe.prep_time_in_minutes}
                 </Card.Text>
             </Card.Body>
-            <div>
+            <Stack className='col-md mx-auto' direction='horizontal' gap={3}>
                 <Button 
                     id={recipe.id}
                     size="sm" 
@@ -54,13 +54,14 @@ function UserRecipeCard({recipe, onDeleteRecipe}) {
                 <Button 
                     id={recipe.id}
                     size="sm" 
-                    variant="secondary"
+                    variant="danger"
                     onClick={handleDeleteRecipe}
                 >
                     Delete
                 </Button>
-                
-            </div>
+            </Stack>
+
+            </Stack>
         </Card>
     </div>
   )
