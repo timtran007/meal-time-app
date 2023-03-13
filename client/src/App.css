@@ -13,6 +13,10 @@
   }
 }
 
+.formLabel {
+  font-weight: bold;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -36,3 +40,186 @@
     transform: rotate(360deg);
   }
 }
+
+.spacing {
+  margin-top: 2%;
+  margin-bottom: 3%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.formField {
+  margin-top: 5%;
+  margin-bottom: 5%;
+  margin-left: 5%;
+  margin-right: 10%;
+}
+
+.loginForm {
+  margin-top: 4%;
+  margin-bottom: 2%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 4%;
+  padding-bottom: 3%;
+  width: 50%;
+  align-items: center;
+  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+}
+
+.loginButton {
+  margin-top: 7%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.signUpForm {
+  margin-top: 4%;
+  margin-bottom: 2%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 3%;
+  padding-bottom: 2%;
+  width: 50%;
+  align-items: center;
+  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+}
+.signUpFormField {
+  margin-top: 5%;
+  margin-bottom: 8%;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+}
+
+.editForm {
+  margin-top: 3%;
+  margin-bottom: 3%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 3%;
+  padding-bottom: 3%;
+  width: 100%;
+  box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.5);
+}
+.editButton {
+  margin-bottom: 5%;
+}
+
+.updateButton{
+  margin-top: 2%;
+  margin-bottom: 4%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.addForm {
+  margin-top: 4%;
+  margin-bottom: 2%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 3%;
+  padding-bottom: 2%;
+  width: 65%;
+  align-items: center;
+  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+}
+
+.recipeCard {
+  margin-top: 3%;
+  margin-bottom: 2%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 3%;
+  padding-bottom: 3%;
+  width: 65%;
+  align-items: center;
+  box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.5);
+}
+
+.recipeImage{
+  margin-top: 3%;
+  margin-bottom: 2%;
+}
+
+.generalButton{
+  margin-top: 2%;
+  margin-bottom: 3%;
+}
+
+.generalCard {
+  width: 80%;
+  align-items: center;
+  align-content: center;
+  margin-top: 3%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 3%;
+  padding-left: 15%;
+  padding-right: 15%;
+  padding-top: 3%;
+  padding-bottom: 3%;
+  box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.5);
+}
+
+.addReviewButton {
+  margin-top: 5%;
+  margin-bottom: 8%
+}
+
+.displayError {
+  margin-top: 7%;
+}
+
+.form {
+  max-width: 120%;
+}
+
+.rowOfButtons {
+  justify-items: center;
+}
+
+.profileImage {
+  width: 100;
+  height: 100;
+}
+
+.ingredientListDelete {
+  margin-left: 10%;
+  justify-content: center;
+}
+
+.listDeleteButton {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2%;
+  margin-bottom: 2%
+}
+
+.formSpacing {
+  margin-top: 2%;
+  margin-left: 10%;
+  margin-right: 10%
+}
+
+.containerSpacing {
+  margin-top: 3%;
+  margin-bottom: 3%;
+}
+
+.list {
+  margin-left: 25%;
+  margin-right: 25%;
+}
+
+
+/* build Heading
+build subheading
+build form submission button
+build toggle form
+build delete button styling
+work on update to DetailedRecipeCard
+stack more details and delete button for UserRecipePage
+fix add new recipe form
+fix button on New Shopping List Ingredient form
+fix login form */
