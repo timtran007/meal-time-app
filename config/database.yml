@@ -81,6 +81,4 @@ test:
 #
 production:
   <<: *default
-  database: meal_time_app_production
-  username: meal_time_app
-  password: <%= ENV["MEAL_TIME_APP_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>
