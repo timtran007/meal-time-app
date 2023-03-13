@@ -102,7 +102,16 @@ function RecipeCard({recipe, user, following, onFollowUser}) {
             <Card.Img variant="top" src={recipe.image_url} />
             </Stack>
             <Card.Body>
-                {following.map(f => f.id).includes(recipe.user.id) ?  null : <Button id={recipe.user.id} onClick={handleFollowClick}>Follow</Button>}
+                {following.map(f => f.id).includes(recipe.user.id) ?  
+                    null : 
+                    <Button 
+                        id={recipe.user.id} 
+                        onClick={handleFollowClick}
+                        variant='outline-primary'
+                        size='sm'
+                    >
+                        Follow
+                    </Button>}
                 <Card.Text>
                     {displayError}
                 </Card.Text>
