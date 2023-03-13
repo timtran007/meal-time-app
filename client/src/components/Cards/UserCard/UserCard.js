@@ -11,11 +11,10 @@ function UserCard({user}) {
     <Container className='spacing'>
       <Row>
         <Stack direction='horizontal' gap={5} >
-        {/* <Card.Img variant="top" src={user.image_url} className='profileImage'/> */}
         <Image 
           roundedCircle='true' 
           variant="top" 
-          src='https://ca.slack-edge.com/T02MD9XTF-U03UFUJS7UH-bd877fb5ef68-512'
+          src={user.image_url}
           className='profileImage'/>
         <p>{user.name}</p>
         <p>Email: {user.email}</p>
