@@ -263,7 +263,7 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
+      <header className="heading">
         <Navigation user={user} setUser={setUser} />
         <h1>Welcome to Meal Time</h1>
         
