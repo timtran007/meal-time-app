@@ -3,6 +3,7 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
+import Stack from 'react-bootstrap/Stack';
 
 function NewRecipeIngredientForm({recipe, onAddRecipeIngredient, onAddIngredientState}) {
     const initialForm = {
@@ -38,13 +39,12 @@ function NewRecipeIngredientForm({recipe, onAddRecipeIngredient, onAddIngredient
         .then(resp => {
             if(resp.ok) {
                 resp.json().then(newRecipeIngredient => onAddRecipeIngredient(newRecipeIngredient))
+                onAddIngredientState(false)
             } else {
                 resp.json().then(error => setErrors(error.errors))
             }
         })
-
         setFormData(initialForm)
-        onAddIngredientState(false)
     }
 
     const displayError = errors.map( e => {
@@ -54,15 +54,21 @@ function NewRecipeIngredientForm({recipe, onAddRecipeIngredient, onAddIngredient
     })
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form 
+        onSubmit={handleSubmit}
+        className='addForm'
+    >
+        <Stack gap={4}>
         <Form.Group as={Row}>
             <Col>
                 <Form.Control
+                    as='input'
                     name='name'
                     type='input'
                     onChange={handleChange}
                     value={formData.name}
                     placeholder="Enter ingredient's name..."
+                    className='inputFieldTwoColumns'
                 >
                 </Form.Control>
             </Col>
@@ -71,6 +77,7 @@ function NewRecipeIngredientForm({recipe, onAddRecipeIngredient, onAddIngredient
                     name='category'
                     onChange={handleChange}
                     value={formData.category}
+                    className='inputFieldTwoColumns'
                 >
                     <option>Select a category...</option>
                     <option value='meats'>meats</option>
@@ -87,11 +94,13 @@ function NewRecipeIngredientForm({recipe, onAddRecipeIngredient, onAddIngredient
         <Form.Group as={Row}>
             <Col>
                 <Form.Control
+                    as='input'
                     name='quantity'
                     type='input'
                     onChange={handleChange}
                     value={formData.quantity}
                     placeholder="Enter ingredient's quantity number..."
+                    className='inputFieldTwoColumns'
                 >
                 </Form.Control>
             </Col>
@@ -100,6 +109,7 @@ function NewRecipeIngredientForm({recipe, onAddRecipeIngredient, onAddIngredient
                     name='measurement'
                     onChange={handleChange}
                     value={formData.measurement}
+                    className='inputFieldTwoColumns'
                 >
                     <option>Select a measurement...</option>
                     <option value='cup/cups'>cup/cups</option>
@@ -113,6 +123,8 @@ function NewRecipeIngredientForm({recipe, onAddRecipeIngredient, onAddIngredient
         <div>
             <Button
                 type="submit"
+                variant='secondary'
+                size='sm'
             >
                 Add
             </Button>
@@ -120,6 +132,7 @@ function NewRecipeIngredientForm({recipe, onAddRecipeIngredient, onAddIngredient
         <div>
             {displayError}
         </div>
+        </Stack>
     </Form>
   )
 }
