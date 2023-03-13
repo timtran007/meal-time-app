@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
+import Stack from 'react-bootstrap/esm/Stack'
+import Col from 'react-bootstrap/Col'
 
 function RecipeCard({recipe, user, following, onFollowUser}) {
     const history = useHistory()
@@ -94,9 +96,11 @@ function RecipeCard({recipe, user, following, onFollowUser}) {
 
   return (
     <div>
-        <Card>
+        <Card className='recipeCard'>
+            <Stack gap={4}>
             <Card.Title>Recipe: {recipe.title}</Card.Title>
             <Card.Img variant="top" src={recipe.image_url} />
+            </Stack>
             <Card.Body>
                 {following.map(f => f.id).includes(recipe.user.id) ?  null : <Button id={recipe.user.id} onClick={handleFollowClick}>Follow</Button>}
                 <Card.Text>
@@ -105,14 +109,27 @@ function RecipeCard({recipe, user, following, onFollowUser}) {
             </Card.Body>
             <Card.Body>
               <Card.Text>
-                    Cook Time: {recipe.cook_time_in_minutes}
+                    Cook Time: {recipe.cook_time_in_minutes} | Prep Time: {recipe.prep_time_in_minutes}
                 </Card.Text>
-                <Card.Text>
-                    Prep Time: {recipe.prep_time_in_minutes}
-                </Card.Text>
-                <Card.Text>
-                    {user ? `${recipe.user.name} | ${recipe.user.image_url}` : `${user.name} | ${user.image_url}`}
-                </Card.Text>
+                <Card.Body>
+                    {user ? 
+                    <Card.Body>
+                        <Col>
+                            <Card.Img src={recipe.user.image_url} className="profileImage"></Card.Img> 
+                        </Col>
+                        <Col>
+                            <Card.Text>{recipe.user.name}</Card.Text>
+                        </Col>
+                    </Card.Body> : 
+                    <Card.Body>
+                        <Col>
+                            <Card.Img src={user.image_url} className="profileImage"></Card.Img> 
+                        </Col>
+                        <Col>
+                            <Card.Text>{user.name}</Card.Text>
+                        </Col>
+                    </Card.Body>}
+                </Card.Body>
             </Card.Body>
             <div>
                 <Button 
