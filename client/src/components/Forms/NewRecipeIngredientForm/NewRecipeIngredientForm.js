@@ -114,7 +114,7 @@ function NewRecipeIngredientForm({recipe, onAddRecipeIngredient, onAddIngredient
             <Button
                 type="submit"
             >
-                Add ingredient
+                Add
             </Button>
         </div>
         <div>
