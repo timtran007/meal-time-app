@@ -3,6 +3,7 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
+import Stack from 'react-bootstrap/Stack';
 
 function NewShoppingListIngredientForm({shopping_list, onAddNewListIngredient}) {
     const initialFormData = {
@@ -50,9 +51,11 @@ function NewShoppingListIngredientForm({shopping_list, onAddNewListIngredient}) 
     })
 
   return (
-    <Form onSubmit={handleSubmit}>
-        <Row>
-            <Col>
+    <Form 
+        onSubmit={handleSubmit}
+        className='formSpacing'
+    >
+        <Stack direction="horizontal" gap={5} className="singleInput">
                 <Form.Control 
                     placeholder="enter item's name..."
                     onChange={handleChange}
@@ -60,8 +63,6 @@ function NewShoppingListIngredientForm({shopping_list, onAddNewListIngredient}) 
                     name='name'
                     value={formData.name}
                 />
-            </Col>
-            <Col>
                 <Form.Select
                     name='category'
                     onChange={handleChange}
@@ -77,21 +78,17 @@ function NewShoppingListIngredientForm({shopping_list, onAddNewListIngredient}) 
                     <option value='grains'>grains</option>
                     <option value='canned_goods'>canned goods</option>
                 </Form.Select>
-            </Col>
-            <Col>
                 <Button
                     variant="secondary"
                     type="submit"
+                    size='sm'
                 >
                     add ingredient
                 </Button>
-            </Col>
             <Row>
-                <Col>
                 {displayError}
-                </Col>
             </Row>
-        </Row>
+        </Stack>
     </Form>
   )
 }
