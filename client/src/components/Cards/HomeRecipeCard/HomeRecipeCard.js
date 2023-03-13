@@ -14,7 +14,7 @@ function HomeRecipeCard({recipe}) {
 
   return (
     <div>
-        <Card className="generalCard">
+        <Card className="recipeCard">
             <Stack gap={4}>
             <Card.Title>Recipe: {recipe.title}</Card.Title>
             <Card.Img variant="top" src={recipe.image_url} />
@@ -29,8 +29,9 @@ function HomeRecipeCard({recipe}) {
                     Prep Time: {recipe.prep_time_in_minutes}
                 </Card.Text>
                 <Card.Text>
-                    {recipe.user.name} | {recipe.user.image_url}
+                    {recipe.user.name}
                 </Card.Text>
+                <Card.Img src={recipe.user.image_url} className='profileImage'></Card.Img>
             </Card.Body>
             <div>
                 <Button 
