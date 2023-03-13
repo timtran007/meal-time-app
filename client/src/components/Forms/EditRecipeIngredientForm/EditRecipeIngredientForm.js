@@ -3,7 +3,7 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
-import Stack from 'react-bootstrap/esm/Stack';
+
 
 
 function EditRecipeIngredientForm({recipe, ingredientId, onEditRecipeIngredient, onEditIngredientState}) {
@@ -61,9 +61,9 @@ function EditRecipeIngredientForm({recipe, ingredientId, onEditRecipeIngredient,
     })
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit} className='editForm'>
         <Form.Group as={Row} className="mb-3">
-            <Col>
+            <Col className='formField'>
                 <Form.Control
                     name='name'
                     type='input'
@@ -73,7 +73,7 @@ function EditRecipeIngredientForm({recipe, ingredientId, onEditRecipeIngredient,
                 >
                 </Form.Control>
             </Col>
-            <Col>
+            <Col className='formField'>
             <Form.Select
                     name='category'
                     onChange={handleChange}
@@ -92,7 +92,7 @@ function EditRecipeIngredientForm({recipe, ingredientId, onEditRecipeIngredient,
             </Col>
         </Form.Group>
         <Form.Group as={Row} className="mb-3">
-            <Col>
+            <Col className='formField'>
                 <Form.Control
                     name='quantity'
                     type='input'
@@ -102,7 +102,7 @@ function EditRecipeIngredientForm({recipe, ingredientId, onEditRecipeIngredient,
                 >
                 </Form.Control>
             </Col>
-            <Col>
+            <Col className='formField'>
             <Form.Select
                     name='measurement'
                     onChange={handleChange}
@@ -121,6 +121,8 @@ function EditRecipeIngredientForm({recipe, ingredientId, onEditRecipeIngredient,
             <Col>
             <Button
                 type="submit"
+                variant='secondary'
+                size='sm'
             >
                 Save Changes
             </Button>

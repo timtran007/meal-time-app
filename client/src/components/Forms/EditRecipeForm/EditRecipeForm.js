@@ -57,8 +57,11 @@ function EditRecipeForm({recipe, onSubmitEditRecipe, onCollapseRecipeForm}) {
     })
 
   return (
-    <Form onSubmit={handleSubmit}>
-        <Form.Group as={Row} className="formGroup">
+    <Form 
+        onSubmit={handleSubmit}
+        className='addForm'
+    >
+        <Form.Group as={Row} className="mb-3">
             <Form.Label
                 htmlFor='title'
             >
@@ -71,11 +74,12 @@ function EditRecipeForm({recipe, onSubmitEditRecipe, onCollapseRecipeForm}) {
                     type='input'
                     onChange={handleChange}
                     value={formData.title}
+                    className='inputField'
                 >
                 </Form.Control>
             </Col>
         </Form.Group>
-        <Form.Group as={Row} className="formGroup">
+        <Form.Group as={Row} className="mb-3">
             <Form.Label
                 htmlFor='image_url'
             >
@@ -88,11 +92,12 @@ function EditRecipeForm({recipe, onSubmitEditRecipe, onCollapseRecipeForm}) {
                     type='input'
                     onChange={handleChange}
                     value={formData.image_url}
+                    className='inputField'
                 >
                 </Form.Control>
             </Col>
         </Form.Group>
-        <Form.Group as={Row} className="formGroup" >
+        <Form.Group as={Row} className="mb-3">
             <Form.Label
                 htmlFor='instructions'
             >
@@ -100,16 +105,19 @@ function EditRecipeForm({recipe, onSubmitEditRecipe, onCollapseRecipeForm}) {
             </Form.Label>
             <Col>
                 <Form.Control
+                    as='textarea'
+                    rows={6}
                     id='instructions'
                     name='instructions'
                     type='textarea'
                     onChange={handleChange}
                     value={formData.instructions}
+                    className='inputField'
                 >
                 </Form.Control>
             </Col>
         </Form.Group>
-        <Form.Group as={Row} className="formGroup" >
+        <Form.Group as={Row} className="mb-3">
             <Form.Label
                 htmlFor='cook_time_in_minutes'
             >
@@ -122,11 +130,12 @@ function EditRecipeForm({recipe, onSubmitEditRecipe, onCollapseRecipeForm}) {
                     type='number'
                     onChange={handleChange}
                     value={formData.cook_time_in_minutes}
+                    className='inputField'
                 >
                 </Form.Control>
             </Col>
         </Form.Group>
-        <Form.Group as={Row} className="formGroup" >
+        <Form.Group as={Row} className="mb-3">
             <Form.Label
                 htmlFor='prep_time_in_minutes'
             >
@@ -139,6 +148,7 @@ function EditRecipeForm({recipe, onSubmitEditRecipe, onCollapseRecipeForm}) {
                     type='number'
                     onChange={handleChange}
                     value={formData.prep_time_in_minutes}
+                    className='inputField'
                 >
                 </Form.Control>
             </Col>
@@ -146,6 +156,8 @@ function EditRecipeForm({recipe, onSubmitEditRecipe, onCollapseRecipeForm}) {
         <div>
             <Button
                 type='submit'
+                variant='secondary'
+                size='sm'
             >
                 Save Changes
             </Button>
