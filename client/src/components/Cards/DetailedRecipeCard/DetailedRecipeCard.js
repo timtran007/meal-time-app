@@ -5,6 +5,7 @@ import Row from 'react-bootstrap/Row'
 import Container from 'react-bootstrap/Container'
 import Stack from 'react-bootstrap/Stack'
 import Col from 'react-bootstrap/Col'
+import Image from 'react-bootstrap/Image'
 
 
 function DetailedRecipeCard({recipes}) {
@@ -13,7 +14,9 @@ function DetailedRecipeCard({recipes}) {
     if(recipe){
     return(
         <div className=''>
-            <Container>
+            <Container
+                className='containerSpacing'
+            >
                 <Stack gap={4}>
                     <Card.Title data-testid="Recipe Title">Recipe: {recipe.title}</Card.Title>
                     <Card.Img variant="top" src={recipe.image_url} />
@@ -27,7 +30,8 @@ function DetailedRecipeCard({recipes}) {
                 </Card.Body>
                 <Card.Body>
                     <Card.Text>
-                    Ingredients: {recipe.recipe_ingredients.map(ingredient => {
+                    <h5>Ingredients:</h5> 
+                    {recipe.recipe_ingredients.map(ingredient => {
                         return(
                             <Card.Text key={ingredient.id}>
                                 {ingredient.name} - {ingredient.quantity} {ingredient.measurement}
@@ -39,7 +43,10 @@ function DetailedRecipeCard({recipes}) {
                 <Card.Body>
                     <Row>
                         <Col>
-                            <Card.Img src={recipe.user.image_url}></Card.Img>
+                        by:
+                        </Col>
+                        <Col>
+                            <Image src={recipe.user.image_url} roundedCircle='true'/>
                         </Col>
                         <Col>
                             <Card.Text>
