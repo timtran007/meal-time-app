@@ -10,6 +10,7 @@ import UserPage from './pages/UserPage/UserPage';
 import UserRecipesPage from './pages/UserRecipesPage/UserRecipesPage';
 import UserShoppingListsPage from './pages/UserShoppingListsPage/UserShoppingListsPage';
 import RecipeHomePage from './pages/RecipeHomePage/RecipeHomePage'
+import { RecipesContext } from './context/recipes';
 
 function App() {
 
@@ -268,12 +269,14 @@ function App() {
         <h1>Welcome to Meal Time</h1>
         
         <Switch>
-          <Route exact path='/'>
-            { user ? <RecipePage recipes={recipes} user={user} following={user.following} onFollowUser={onFollowUser}/> : <RecipeHomePage recipes={recipes}/>}
-          </Route>
-          <Route path='/recipes/:recipe_id'>
-            <DetailedRecipeCard recipes={recipes}/>
-          </Route>
+          <RecipesContext.Provider value={recipes}>
+            <Route exact path='/'>
+              { user ? <RecipePage user={user} following={user.following} onFollowUser={onFollowUser}/> : <RecipeHomePage/>}
+            </Route>
+            <Route path='/recipes/:recipe_id'>
+              <DetailedRecipeCard recipes={recipes}/>
+            </Route>
+          </RecipesContext.Provider>
           <Route exact path='/profile'>
             {user ? <UserPage user={user} followers={user.followers} following={user.following} onDeleteFollowingShip={onDeleteFollowingShip}/> : "loading"}
           </Route>
