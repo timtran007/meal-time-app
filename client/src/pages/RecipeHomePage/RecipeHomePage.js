@@ -7,7 +7,7 @@ import '../../../src/App.css'
 import { RecipesContext } from '../../context/recipes';
 
 
-function RecipeHomePage() {
+function RecipeHomePage({recipes}) {
     const recipes = useContext(RecipesContext)
   return (
     <Container>
