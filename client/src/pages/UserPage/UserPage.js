@@ -11,7 +11,7 @@ function UserPage({user, followers, following, onDeleteFollowingShip}) {
       <h2>My Profile</h2>
       { user ? <UserCard user={user}/>: "loading"}
       <div className='spacing'>
-      <h3>Following ({following.length})</h3>
+      <h3>Following ({following ? following.length : null})</h3>
       <Carousel 
         interval={null} 
         variant="dark"
@@ -24,11 +24,11 @@ function UserPage({user, followers, following, onDeleteFollowingShip}) {
             </div>
             </Carousel.Item>
           )
-        }) : "loading"}
+        }) : null}
       </Carousel>
       </div>
       <div >
-      <h3>Followers ({followers.length})</h3>
+      <h3>Followers ({ followers ? followers.length: null})</h3>
       <Carousel 
         interval={null} 
         variant="dark"
@@ -41,7 +41,7 @@ function UserPage({user, followers, following, onDeleteFollowingShip}) {
             </div>
             </Carousel.Item>
           )
-        }): 'loading'}
+        }): null}
         </Carousel>
       </div>
     </div>
