@@ -11,7 +11,7 @@ function Navigation({user, setUser}){
 
     //fetch to logout user (delete session)
     function handleLogout(){
-        fetch("/logout", {
+        fetch("/api/logout", {
             method: "DELETE"
         }).then( resp => {
             if (resp.ok){

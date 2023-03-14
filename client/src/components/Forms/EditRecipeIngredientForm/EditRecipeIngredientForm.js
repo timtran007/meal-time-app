@@ -34,7 +34,7 @@ function EditRecipeIngredientForm({recipe, ingredientId, onEditRecipeIngredient,
 
     function handleSubmit(e) {
         e.preventDefault()
-        fetch(`/recipe_ingredients/${ingredientId}`, {
+        fetch(`/api/recipe_ingredients/${ingredientId}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json"

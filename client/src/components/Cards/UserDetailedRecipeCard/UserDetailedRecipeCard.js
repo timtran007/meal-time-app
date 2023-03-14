@@ -42,7 +42,7 @@ function UserDetailedRecipeCard({userRecipes, onSubmitEditRecipe, onAddRecipeIng
     }
     function handleDeleteIngredient(e) {
         const ingredientId = e.target.id
-        fetch(`/recipe_ingredients/${ingredientId}`, {
+        fetch(`/api/recipe_ingredients/${ingredientId}`, {
             method: "DELETE"
         })
         .then(resp => {

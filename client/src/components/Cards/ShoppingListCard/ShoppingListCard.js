@@ -11,7 +11,7 @@ function ShoppingListCard({shopping_list, onDeleteListIngredient}) {
 
     function handleDelete(e) {
         const ingredientId = e.target.id
-        fetch(`/ingredients/${ingredientId}`, {
+        fetch(`/api/ingredients/${ingredientId}`, {
             method: "DELETE"
         })
         .then(resp => {

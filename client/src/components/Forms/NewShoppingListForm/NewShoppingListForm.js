@@ -20,7 +20,7 @@ function NewShoppingListForm({onSubmitNewList, onAddListState}) {
     function handleSubmit(e) {
         e.preventDefault()
         
-        fetch('/shopping_lists', {
+        fetch('/api/shopping_lists', {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

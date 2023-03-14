@@ -31,7 +31,7 @@ function EditRecipeForm({recipe, onSubmitEditRecipe, onCollapseRecipeForm}) {
 
     function handleSubmit(e) {
         e.preventDefault()
-        fetch(`/recipes/${recipe.id}`, {
+        fetch(`/api/recipes/${recipe.id}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json"

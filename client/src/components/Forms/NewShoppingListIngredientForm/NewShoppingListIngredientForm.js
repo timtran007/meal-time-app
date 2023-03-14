@@ -27,7 +27,7 @@ function NewShoppingListIngredientForm({shopping_list, onAddNewListIngredient}) 
 
     function handleSubmit(e) {
         e.preventDefault()
-        fetch('/ingredients', {
+        fetch('/api/ingredients', {
             method: "POST", 
             headers: {
                 "Content-Type": "application/json"

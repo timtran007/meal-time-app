@@ -20,7 +20,7 @@ function App() {
   const [recipes, setRecipes] = useState([])
 
   useEffect(() => {
-    fetch('/me')
+    fetch('/api/me')
     .then(resp => {
       if(resp.ok) {
         resp.json().then(userData => setUser(userData))
@@ -29,7 +29,7 @@ function App() {
   }, [])
   
   useEffect(() => {
-    fetch('/recipes')
+    fetch('/api/recipes')
     .then(resp => resp.json())
     .then(data => setRecipes(data))
   }, [])
