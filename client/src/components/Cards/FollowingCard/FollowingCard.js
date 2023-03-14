@@ -11,7 +11,7 @@ function FollowingCard({following, user, onDeleteFollowingShip}) {
   function handleUnfollow(e) {
     //write delete request from the end point '/following_ships/:id'
     const followingShipId = user.following_ships.find(fs => fs.user_2_id === following.id).id
-    fetch(`/api/following_ships/${followingShipId}`,{
+    fetch(`/following_ships/${followingShipId}`,{
       method: "DELETE"
     })
     .then( resp => {

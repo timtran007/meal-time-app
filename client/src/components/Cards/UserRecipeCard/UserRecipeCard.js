@@ -18,7 +18,7 @@ function UserRecipeCard({recipe, onDeleteRecipe}) {
     function handleDeleteRecipe(e){
         //handle delete function
         const recipeId = recipe.id 
-        fetch(`/api/recipes/${recipe.id}`, {
+        fetch(`/recipes/${recipe.id}`, {
             method: "DELETE"
         })
         .then(resp => {

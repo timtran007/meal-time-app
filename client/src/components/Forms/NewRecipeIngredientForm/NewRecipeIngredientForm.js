@@ -29,7 +29,7 @@ function NewRecipeIngredientForm({recipe, onAddRecipeIngredient, onAddIngredient
 
     function handleSubmit(e) {
         e.preventDefault()
-        fetch(`/api/recipe_ingredients`, {
+        fetch(`/recipe_ingredients`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

@@ -23,7 +23,7 @@ function RecipeCard({recipe, user, following, onFollowUser}) {
             user_2_id: parseInt(e.target.id),
         }
 
-        fetch('/api/following_ships', {
+        fetch('/following_ships', {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -45,7 +45,7 @@ function RecipeCard({recipe, user, following, onFollowUser}) {
     // function handleLikeClick(e) {
     //     const recipeId = parseInt(e.target.id)
     //     if(!voteState && !likeState) {
-    //         fetch(`/api/recipe-likes/${recipeId}`, {
+    //         fetch(`/recipe-likes/${recipeId}`, {
     //             method: "PATCH",
     //             headers: {
     //                 "Content-Type": "application/json"
@@ -66,7 +66,7 @@ function RecipeCard({recipe, user, following, onFollowUser}) {
     //             }
     //         })
     //     } else if (voteState && likeState) {
-    //         fetch(`/api/recipe-likes/${recipeId}`, {
+    //         fetch(`/recipe-likes/${recipeId}`, {
     //             method: "PATCH",
     //             headers: {
     //                 "Content-Type": "application/json"

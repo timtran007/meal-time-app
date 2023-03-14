@@ -30,7 +30,7 @@ function NewRecipeForm({onSubmitNewRecipe, onCollapseForm}) {
 
     function handleSubmit(e) {
         e.preventDefault()
-        fetch('/api/recipes', {
+        fetch('/recipes', {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

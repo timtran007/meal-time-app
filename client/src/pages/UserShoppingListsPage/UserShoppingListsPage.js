@@ -18,7 +18,7 @@ function UserShoppingListsPage({user, onSubmitNewList, onDeleteShoppingList, onA
   function handleDeleteList(e) {
     // delete request & update state from App of user to delete the Shopping List
     const shoppingListId = e.target.id
-    fetch(`/api/shopping_lists/${shoppingListId}`, {
+    fetch(`/shopping_lists/${shoppingListId}`, {
       method: "DELETE"
     })
     .then(resp => {
