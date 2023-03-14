@@ -1,12 +1,9 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import Container from 'react-bootstrap/esm/Container'
 import RecipeCard from '../../../src/components/Cards/RecipeCard/RecipeCard'
 import Stack from 'react-bootstrap/esm/Stack'
-import { RecipesContext } from '../../context/recipes'
 
-function RecipePage({user, following, onFollowUser}) {
-
-    const recipes = useContext(RecipesContext)
+function RecipePage({recipes, user, following, onFollowUser}) {
     const flatened = following.flatMap( f => f.recipes)
     const r = recipes.filter(r => r.user.id !== user.id)
     const userRecipes = [...flatened, ...r]
