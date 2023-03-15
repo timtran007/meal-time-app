@@ -1,14 +1,12 @@
 import React, { useContext } from 'react'
 import HomeRecipeCard from '../../../src/components/Cards/HomeRecipeCard/HomeRecipeCard'
 import Stack from 'react-bootstrap/Stack';
-import Container from 'react-bootstrap/esm/Container';
-import Row from 'react-bootstrap/esm/Row';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
 import '../../../src/App.css'
-import { RecipesContext } from '../../context/recipes';
 
 
 function RecipeHomePage({recipes}) {
-    const recipes = useContext(RecipesContext)
   return (
     <Container>
         <Row >
