@@ -1,7 +1,7 @@
 import React from 'react'
-import Container from 'react-bootstrap/esm/Container'
+import Container from 'react-bootstrap/Container'
 import RecipeCard from '../../../src/components/Cards/RecipeCard/RecipeCard'
-import Stack from 'react-bootstrap/esm/Stack'
+import Stack from 'react-bootstrap/Stack'
 
 function RecipePage({recipes, user, following, onFollowUser}) {
 

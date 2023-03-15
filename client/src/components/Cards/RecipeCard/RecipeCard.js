@@ -2,8 +2,7 @@ import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
-import Stack from 'react-bootstrap/esm/Stack'
-import Col from 'react-bootstrap/Col'
+import Stack from 'react-bootstrap/Stack'
 import Image from 'react-bootstrap/Image'
 
 function RecipeCard({recipe, user, following, onFollowUser}) {

@@ -77,7 +77,7 @@ describe('new recipe form functionality', () => {
     it('should clear title input after button click', () => {
         render(<NewRecipeForm onSubmitNewRecipe={functionProp} onCollapseForm={functionProp}/>);
         const titleInput = screen.getByLabelText(/title/i)
-        const button = screen.getByRole( 'button', { name: /add recipe/i})
+        const button = screen.getByRole( 'button', { name: /add/i})
         fireEvent.change(titleInput, { target: { value: "best steak restaurant"} })
         fireEvent.click(button)
         expect(titleInput.value).toBe("")
@@ -86,7 +86,7 @@ describe('new recipe form functionality', () => {
     it('should clear imageUrl input after button click', () => {
         render(<NewRecipeForm onSubmitNewRecipe={functionProp} onCollapseForm={functionProp}/>);
         const imageUrlInput = screen.getByLabelText(/image url/i)
-        const button = screen.getByRole( 'button', { name: /add recipe/i})
+        const button = screen.getByRole( 'button', { name: /add/i})
         fireEvent.change(imageUrlInput, { target: { value: "https://steakschool.com/wp-content/uploads/2020/02/Ribeye-1.jpg"} })
         fireEvent.click(button)
         expect(imageUrlInput.value).toBe("")
@@ -95,7 +95,7 @@ describe('new recipe form functionality', () => {
     it('should clear cookTimeInMinutes input after button click', () => {
         render(<NewRecipeForm onSubmitNewRecipe={functionProp} onCollapseForm={functionProp}/>);
         const cookTimeInMinutesInput = screen.getByLabelText(/cook time in minutes/i)
-        const button = screen.getByRole( 'button', { name: /add recipe/i})
+        const button = screen.getByRole( 'button', { name: /add/i})
         fireEvent.change(cookTimeInMinutesInput, { target: { value: 15} })
         fireEvent.click(button)
         expect(cookTimeInMinutesInput.value).toBe("0")
@@ -104,7 +104,7 @@ describe('new recipe form functionality', () => {
     it('should clear prepTimeInMinutes input after button click', () => {
         render(<NewRecipeForm onSubmitNewRecipe={functionProp} onCollapseForm={functionProp}/>);
         const prepTimeInMinutesInput = screen.getByLabelText(/prep time/i)
-        const button = screen.getByRole( 'button', { name: /add recipe/i})
+        const button = screen.getByRole( 'button', { name: /add/i})
         fireEvent.change(prepTimeInMinutesInput, { target: { value: 10} })
         fireEvent.click(button)
         expect(prepTimeInMinutesInput.value).toBe("0")
