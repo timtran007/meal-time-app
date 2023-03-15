@@ -96,7 +96,7 @@ function SignUpForm({onSignup}) {
                 <Form.Control
                     id='password'
                     name='password'
-                    type='input'
+                    type='password'
                     onChange={handleChange}
                     value={formData.password}
                 >
@@ -111,7 +111,7 @@ function SignUpForm({onSignup}) {
                 <Form.Control
                     id='password_confirmation'
                     name='password_confirmation'
-                    type='input'
+                    type='password'
                     onChange={handleChange}
                     value={formData.password_confirmation}
                 >
